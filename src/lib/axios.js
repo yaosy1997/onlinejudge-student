@@ -7,7 +7,7 @@
  * Last Modified: Friday, 28th June 2019 6:41:35 pm
  * Modified By: syyao yao__sy@163.com
  * -----
- * Copyright 2019 - 2019 syyao, MJU_JLXY
+ * Copyright 2019 - 2019 syyao, NJU_JLXY
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------

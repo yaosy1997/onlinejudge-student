@@ -7,7 +7,7 @@
  * Last Modified: Saturday, 29th June 2019 3:37:33 pm
  * Modified By: syyao yao__sy@163.com
  * -----
- * Copyright 2019 - 2019 syyao, MJU_JLXY
+ * Copyright 2019 - 2019 syyao, NJU_JLXY
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
@@ -25,6 +25,6 @@ export default [{
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/Bank.vue')
-  }
+    component: () => import('../views/Bank/Bank.vue')
+  },
 ]

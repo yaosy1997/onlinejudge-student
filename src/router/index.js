@@ -7,10 +7,12 @@
  * Last Modified: Saturday, 29th June 2019 3:37:13 pm
  * Modified By: syyao yao__sy@163.com
  * -----
- * Copyright 2019 - 2019 syyao, MJU_JLXY
+ * Copyright 2019 - 2019 syyao, NJU_JLXY
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ * 
+ * 30 06 2019	syyao	初始化
  */
 import Vue from 'vue'
 import Router from 'vue-router'
