@@ -29,10 +29,12 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start()
+    to
+    from
     let isLogin = store.state.user.isLogin
     if (isLogin === false) {
         store.dispatch('getUserInfo').then(info => {
-            console.log(1)
+            console.log(info)
             next()
         })
     } else {
@@ -41,6 +43,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
+    to
     iView.LoadingBar.finish()
     window.scrollTo(0, 0)
 })

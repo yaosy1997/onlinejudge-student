@@ -22,7 +22,6 @@ export default {
     },
     actions: {
         getUserInfo({
-            state,
             commit
         }) {
             return new Promise((resolve, reject) => {

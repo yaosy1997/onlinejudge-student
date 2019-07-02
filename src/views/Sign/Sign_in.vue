@@ -69,11 +69,11 @@ export default {
         return;
       }
 
-      this.http.post(this, "/WebLogin", params).then(function(msg) {
+      this.http.post(this, "/WebLogin").then(function(msg) {
         if (msg.data.code === "200") {
           _this.$Message.success("登陆成功");
           _this.$emit("update:isShow", false);
-          GetUserInfo.getUserInfo(_this);
+          
         } else {
           _this.$Message.error(msg.data.message);
         }
