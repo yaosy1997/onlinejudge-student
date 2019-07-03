@@ -79,16 +79,19 @@ export default {
         if (msg === "success") {
           this.$Message.success("登陆成功");
           this.$emit("update:isShow", false);
-           this.getUserInfo()
+          this.getUserInfo()
         } else {
           this.$Message.error(msg);
         }
       });
-      _this.hackReset = false;
-      _this.$nextTick(() => {
-        _this.hackReset = true;
+      this.reset()
+    },
+    reset(){
+      this.hackReset = false;
+      this.$nextTick(() => {
+        this.hackReset = true;
       });
-      _this.vcode = false;
+      this.verify_check = false;
     }
   }
 };

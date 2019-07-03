@@ -26,7 +26,7 @@
             width="800"
             height="500px"
         >
-            <Row>
+            <Row v-if="isShow"><!--使每次弹出登录框时状态初始化 -->
                 <i-col span="12" style="background-color:#86a1bc;border-top-left-radius: 6px;border-bottom-left-radius: 6px;">
                     <div style="width:100%;height:500px;text-align: center;">
                         <img
@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import sign_in from './Sign_in'
-import sign_up from './Sign_up'
+const sign_in=() => import('./Sign_in')  
+const sign_up=() => import('./Sign_up')
 export default {
   name: "sign",
   components:{
