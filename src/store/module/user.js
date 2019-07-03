@@ -1,4 +1,5 @@
 import {
+    login,
     getBasicInfo
 } from '@/api/user'
 
@@ -9,6 +10,9 @@ export default {
         loginFilter: false
     },
     mutations: {
+        setLogin(state){
+            state.isLogin=true
+        },
         setUserInfo(state, info) {
             state.info = info
             state.isLogin = true
@@ -21,9 +25,21 @@ export default {
         },
     },
     actions: {
-        getUserInfo({
-            commit
-        }) {
+        handleLogin({commit},{username,password}){
+            return new Promise((resolve, reject) => {
+                login(username,password).then(res => {
+                  if(res.data.code==="200"){
+                      commit("setLogin")
+                      resolve("success")
+                  }else{
+                    resolve(res.data.data)
+                  }
+                }).catch(err => {
+                  reject(err)
+                })
+            })
+        },
+        getUserInfo({commit}) {
             return new Promise((resolve, reject) => {
                 try {
                     getBasicInfo().then(res => {

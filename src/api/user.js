@@ -13,17 +13,35 @@
  * ----------	---	---------------------------------------------------------
  */
 import axios from '@/lib/api.request'
+import crypto from '@/util/crypto'
 
-export const getBasicInfo =()=>{
-    return axios.request({
-        url: '/ifload',
-        method: 'post'
-      })
+//将要发送的数据构造成Form Data对象
+function paramsSerializer(params) {
+  let param = new URLSearchParams()
+  for (let i=0; i < params.length; i++) {
+    param.append(params[i].name, params[i].value)
+  }
+  return param
 }
 
-export const login =()=>{
-    return axios.request({
-        url: '/WebLogin',
-        method: 'post'
-      })
+export const getBasicInfo = () => {
+  return axios.request({
+    url: '/ifload',
+    method: 'post'
+  })
+}
+
+export const login = (username, passowrd) => {
+  const data = paramsSerializer([{
+    "name": "username",
+    "value": username
+  }, {
+    "name": "password",
+    "value": crypto.Encrypt(passowrd)
+  }])
+  return axios.request({
+    url: '/Weblogin',
+    method: 'post',
+    data
+   })
 }

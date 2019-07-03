@@ -58,7 +58,7 @@
 
                     <div v-if="isSign_in">
                         <div style="text-align: center;height: 80px;margin-top: 10px;">
-                           <sign_in></sign_in>
+                           <sign_in v-bind:isShow.sync="isShow"></sign_in>
                         </div>
                         
                     </div>

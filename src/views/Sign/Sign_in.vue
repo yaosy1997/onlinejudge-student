@@ -26,7 +26,7 @@
         <br/>
         <verify
             v-if="hackReset"
-            v-bind:VCode.sync="verify_check"
+            v-bind:verify_check.sync="verify_check"
             style="width:240px;margin: 20px auto auto;"
         ></verify>
                 <Button type="primary" style="width:240px;margin-top: 20px;height: 35px;margin-bottom:20px;" @click="login">登
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: "Sign_up",
   data() {
@@ -49,6 +50,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'handleLogin',
+      'getUserInfo'
+    ]),
     login: function() {
       let _this = this;
 
@@ -68,14 +73,15 @@ export default {
         this.$Message.warning("请完成验证");
         return;
       }
-
-      this.http.post(this, "/WebLogin").then(function(msg) {
-        if (msg.data.code === "200") {
-          _this.$Message.success("登陆成功");
-          _this.$emit("update:isShow", false);
-          
+      let username=this.formInline.user
+      let password=this.formInline.password
+      this.handleLogin({username,password}).then(msg => {
+        if (msg === "success") {
+          this.$Message.success("登陆成功");
+          this.$emit("update:isShow", false);
+           this.getUserInfo()
         } else {
-          _this.$Message.error(msg.data.message);
+          this.$Message.error(msg);
         }
       });
       _this.hackReset = false;

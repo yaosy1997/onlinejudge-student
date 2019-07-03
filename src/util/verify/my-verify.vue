@@ -45,7 +45,7 @@
             successFunction(){
                 this.confirmSuccess = true;
                 this.confirmWords = '验证通过';
-                this.bus.$emit('vcode',true);
+                this.$emit('update:verify_check',true);
                 if(window.addEventListener){
                   document.getElementsByTagName('html')[0].removeEventListener('mousemove',this.mouseMoveFn);
                   document.getElementsByTagName('html')[0].removeEventListener('mouseup',this.moseUpFn);
