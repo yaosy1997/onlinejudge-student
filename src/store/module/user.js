@@ -1,6 +1,25 @@
+/*
+ * File: user.js
+ * Project: onlinejudge_student
+ * File Created: Wednesday, 3rd July 2019 3:42:39 pm
+ * Author: syyao yao__sy@163.com
+ * -----
+ * Last Modified: Thursday, 4th July 2019 4:29:03 pm
+ * Modified By: syyao yao__sy@163.com
+ * -----
+ * Copyright 2019 - 2019 syyao, NJU_JLXY
+ * HISTORY:
+ * Date         	By  	Comments
+ * -------------	-----	---------------------------------------------------------
+ * 
+ * 4th July 2019	syyao	加入注册与短信
+ */
+
 import {
     login,
-    getBasicInfo
+    logon,
+    getBasicInfo,
+    getCaptcha
 } from '@/api/user'
 
 export default {
@@ -36,6 +55,34 @@ export default {
                   }
                 }).catch(err => {
                   reject(err)
+                })
+            })
+        },
+        handleLogon({commit},{username,password,captcha}){
+            return new Promise((resolve, reject) => {
+                logon(username,password,captcha).then(res => {
+                  if(res.data.code==="200"){
+                      commit("setLogin")
+                      resolve("success")
+                  }else{
+                    resolve(res.data.data)
+                  }
+                }).catch(err => {
+                  reject(err)
+                })
+            })
+        },
+        handleGetCaptcha({commit},{username}){
+            return new Promise((resolve, reject) => {
+                getCaptcha(username).then(res => {
+                  if(res.data.code==="200"){
+                      resolve("success")
+                  }else{
+                    resolve(res.data.data)
+                  }
+                }).catch(err => {
+                  reject(err)
+                  commit
                 })
             })
         },

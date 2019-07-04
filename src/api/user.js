@@ -9,9 +9,17 @@
  * -----
  * Copyright 2019 - 2019 syyao, MJU_JLXY
  * HISTORY:
- * Date      	By	Comments
- * ----------	---	---------------------------------------------------------
+ * Date         	By  	Comments
+ * -------------	-----	---------------------------------------------------------
+ * 
+ * 4th July 2019	syyao	加入注册与短信接口
+ * 
+ * 3th July 2019	syyao	将要发送的数据构造成Form Data对象
+ * 
+ * 28th June 2019	syyao	初始化，并加入登录接口
+ * 
  */
+
 import axios from '@/lib/api.request'
 import crypto from '@/util/crypto'
 
@@ -33,15 +41,45 @@ export const getBasicInfo = () => {
 
 export const login = (username, passowrd) => {
   const data = paramsSerializer([{
-    "name": "username",
-    "value": username
+    name: "username",
+    value: username
   }, {
-    "name": "password",
-    "value": crypto.Encrypt(passowrd)
+    name: "password",
+    value: crypto.Encrypt(passowrd)
   }])
   return axios.request({
     url: '/Weblogin',
     method: 'post',
     data
    })
+}
+
+export const logon = (username,passowrd,captcha) =>{
+  const data = paramsSerializer([{
+    name:"username",
+    value:username
+  },{
+    name:"password",
+    value:crypto.Encrypt(passowrd)
+  },{
+    name:"captcha",
+    value:captcha
+  }])
+  return axios.request({
+    url:'/register',
+    method:'post',
+    data
+  })
+}
+
+export const getCaptcha = (username) => {
+  const data = paramsSerializer([{
+    name:'phone',
+    value:username
+  }])
+  return axios.request({
+    url:'/get_message',
+    method:'post',
+    data
+  })
 }

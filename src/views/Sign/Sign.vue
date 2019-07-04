@@ -10,11 +10,14 @@
  * Copyright 2019 - 2019 syyao, NJU_JLXY
  * -----
  * HISTORY:
- * Date      	By	Comments
- * ----------	---	---------------------------------------------------------
+ * Date         	By  	Comments
+ * -------------	-----	---------------------------------------------------------
  * 
- * 30 06 2019	syyao	初始化登录
+ * 4th July 2019    syyao	初始化注册
+ * 
+ * 30th June 2019   syyao	初始化登录
  */
+
 
 <template>
     <div>
@@ -64,7 +67,7 @@
                     </div>
                     <div v-else>
                         <div style="text-align: center;height: 90px;">
-                          <sign_up></sign_up>
+                          <sign_up v-bind:isShow.sync="isShow"></sign_up>
                         </div>
                        
                     </div>
