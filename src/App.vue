@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+      <img alt="online judge logo" src="./assets/logo.png" style="width:2vw">
       <span>Online-Judge</span>
       <div class="routerBar">
         <router-link to="/">主页</router-link>|
@@ -38,9 +39,11 @@ export default {
 #nav {
   text-align: left;
   padding: 1vw;
-  width: 100vw;
+  width: 100%;
   height: 5vw;
   line-height: 3vw;
+  z-index: 1;
+  position: absolute;
   .routerBar {
     float: right;
     a {

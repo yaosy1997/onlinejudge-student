@@ -1,0 +1,353 @@
+#login_body1 {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    /* background: url(../images/longin_bj.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html,
+body {
+    margin: 0px;
+    padding: 0;
+    height: 100%;
+    font-family: 'arial';
+}
+
+a:hover{
+    color:#C9C9C9;
+}
+
+.hui-content {
+    background-color: rgba(174, 174, 174, 0);
+    box-shadow: 0 0 30px #363636;
+    margin: auto;
+    width: 1150px;
+    height: 650px;
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+
+.hui-nav {
+    height: 50px;
+    width: 95%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.hui_button_home {
+    padding: 10px 40px;
+    background: #1B66CF;
+    border-radius: 60px;
+    font-size: 15px;
+    color: #e4e4e4;
+    font-weight: 600;
+    box-shadow: 5px 1px 10px #363636;
+}
+
+.hui_button {
+    font-size: 14px;
+    color: #e4e4e4;
+    margin-left: 15px;
+}
+
+.hui_text1 {
+    font-family: 'ARIALNI';
+    font-size: 28px;
+    color: #e4e4e4;
+}
+
+.hui_text2 {
+    font-family: 'ARIALNI';
+    font-size: 25px;
+    color: #e4e4e4;
+}
+
+.hui_hr {
+    background-color: #5EC378;
+    height: 2px;
+    width: 150px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border: 0;
+}
+
+.hui_text3 {
+    font-size: 16px;
+    color: #e4e4e4;
+}
+
+.hui_login {
+    margin: auto;
+    width: 80%;
+    height: 450px;
+    margin-top: 100px;
+}
+
+.hui_button_login {
+    font-size: 16px;
+    font-weight: 700;
+    color: #169BD5;
+}
+
+.hui_upright {
+    width: 1px;
+    height: 23px;
+    background-color: #6B6B6B;
+    margin-top: -2px;
+}
+
+.hui_button_logon {
+    font-size: 16px;
+    font-weight: 700;
+    color: #6B6B6B;
+}
+
+.hui_hr_user {
+    background-color: #169BD5;
+    height: 1px;
+    width: 100;
+    border: 0;
+    margin-top:10px;
+}
+
+.hui_hr_password {
+    background-color: #797979;
+    height: 1px;
+    width: 100;
+    border:0;
+    margin-top:10px;
+}
+
+.hui_input {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0px;
+    outline: none;
+    margin-left: 7px;
+    color: #6B6B6B;
+    font-size: 16px;
+}
+
+.huiButtonLogin {
+    border: 0px;
+    padding: 20px 160px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.1);
+    outline:none;
+}
+
+.Button_hr {
+    width: 382px;
+    height: 3px;
+    background-color: #1B66CF;
+    margin-top: 2px;
+}
+
+/*选择按钮样式修改*/
+label input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    margin: 0;
+}
+
+.hui_choose1 input[type="radio"]:after {
+    display: block;
+    content: "";
+    width: 60px;
+    height: 24px;
+    background: url(../images/tl2.png);
+    background-size: 60px 24px
+}
+
+.hui_choose1 input[type="radio"]:checked:after {
+    display: block;
+    content: "";
+    width: 60px;
+    height: 24px;
+    background: url(../images/tl1.png); 
+    background-size: 60px 24px
+}
+
+.hui_choose2 input[type="radio"]:after {
+    display: block;
+    content: "";
+    width: 60px;
+    height: 24px;
+    background: url(../images/sl2.png); 
+    background-size: 60px 24px
+}
+
+.hui_choose2 input[type="radio"]:checked:after {
+    display: block;
+    content: "";
+    width: 60px;
+    height: 24px;
+    background: url(../images/sl1.png);
+    background-size: 60px 24px
+}
+
+.huiButtonCode {
+    border: 0px;
+    padding: 5px 26px;
+    font-size: 15px;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.1);
+}
+
+.hui_input_code {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0px;
+    outline: none;
+    margin-left: 7px;
+    color: #6B6B6B;
+    font-size: 16px;
+    width: 170px;
+}
+
+.huiButtonLogon {
+    border: 0px;
+    padding: 20px 144px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.1);
+    outline: none;
+}
+
+
+
+.huiButtonNext {
+    border: 0px;
+    padding: 20px 144px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.1);
+}
+
+.huiButtonFinish {
+    border: 0px;
+    padding: 20px 164px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.1);
+}
+
+.jq_finish1 {
+    text-align: center;
+    margin-top: 110px;
+    margin-left: 80px;
+    position: absolute;
+}
+
+.finish_text {
+    color: #e4e4e4;
+    font-weight: 800;
+    font-size: 23px;
+    margin-top: 30px;
+}
+
+.hr1 {
+    width: 127px;
+    height: 3px;
+    background-color: #33CCFF;
+    margin-top: 2px;
+}
+
+.hr0 {
+    width: 127px;
+    height: 3px;
+    background-color: #797979;
+    margin-top: 2px;
+}
+
+.hr2 {
+    width: 127px;
+    height: 3px;
+    background-color: #0099FF;
+    margin-top: 2px;
+}
+
+.hr3 {
+    width: 127px;
+    height: 3px;
+    background-color: #3366FF;
+    margin-top: 2px;
+}
+
+.buttonstyle button:active{
+    border: 0px;
+    padding: 20px 144px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.2);
+}
+
+.buttonstyle button:hover{
+    border: 0px;
+    padding: 20px 144px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.2);
+}
+
+.buttonstyle1 button:active{
+    border: 0px;
+    padding: 20px 160px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.2);
+    outline:none;
+}
+
+.buttonstyle1 button:hover{
+    border: 0px;
+    padding: 20px 160px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.2);
+    outline:none;
+}
+
+.buttonstyle2 button:active{
+    border: 0px;
+    padding: 20px 164px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.2);
+}
+
+.buttonstyle2 button:hover{
+    border: 0px;
+    padding: 20px 164px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E4E4E4;
+    background-color: rgba(174, 174, 174, 0.2);
+}
+/*.hui_layout {*/
+    /*background-color: rgba(174, 174, 174, 0);width: 1100px;text-align: center;height: 286px;*/
+/*}*/
+
+/*.left-contect {*/
+    /*width: 100%;height: 600px;*/
+/*}*/
+
+/*.right-contect {*/
+    /*width: 100%;height: 800px;border: 1px solid #E4E4E4;box-shadow: 5px 3px 5px rgba(102, 204, 204, 0.349019607843137);margin-bottom: 40px;*/
+/*}*/
+
+/*.left-message {*/
+    /*width: 100%;height: 190px;border-bottom: 1px solid #E4E4E4;*/
+/*}*/

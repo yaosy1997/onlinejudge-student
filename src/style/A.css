@@ -1,0 +1,413 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #F5F7F9;
+}
+
+.A_img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 50px;
+}
+
+.left-nav {
+    background-color: #312F39;
+    height: 100%;
+    width: 280px;
+    position: fixed;
+    z-index: 998;
+}
+
+.choose1 {
+    background-color: #37A2FF;
+    width: 100%;
+    height: 50px;
+}
+
+.Achoose {
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+}
+
+.Afont {
+    font-size: 22px;
+    color: #fff;
+    margin-left: 20px;
+    margin-top: 80px;
+    position: absolute;
+}
+
+.A_exit {
+    background-color: #312F39;
+    border: #fff solid 1px;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.A_hr {
+    background-color: #717171;
+    width: 100%;
+    height: 1px;
+    margin: 30px 0;
+}
+
+.A-icon1 {
+    width: 22px;
+    margin-left: 40px;
+    margin-top: 13px;
+}
+
+.A-icon2 {
+    width: 18px;
+    margin-left: 40px;
+    margin-top: 13px;
+}
+
+.A-icon3 {
+    width: 18px;
+    margin-left: 40px;
+    margin-top: 13px;
+}
+
+.A_font {
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    margin-left: 16px;
+    margin-top: 13px;
+}
+
+.A_font1 {
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    margin-left: 13px;
+    margin-top: 14px;
+}
+
+
+/*内容一*/
+.A_content {
+    width: 100%;
+}
+
+.A_set {
+    width: 92%;
+    height: 500px;
+    margin-top: 110px;
+}
+
+.web_state {
+    background-color: #fff;
+    height: 180px;
+}
+
+.web_t {
+    background-color: #BEF6FF;
+    height: 40px;
+    font-size: 15px;
+}
+
+.web_t1 {
+    width: 180px;
+    height: 85px;
+    background-color: #4EC4CC;
+    margin: 20px auto;
+    color: #fff;
+    text-align: center;
+}
+
+.web_t12 {
+    width: 180px;
+    height: 85px;
+    background-color: #F3C563;
+    margin: 20px auto;
+    color: #fff;
+    text-align: center;
+}
+
+.web_t13 {
+    width: 180px;
+    height: 85px;
+    background-color: #67CDA6;
+    margin: 20px auto;
+    color: #fff;
+    text-align: center;
+}
+
+.w_hr {
+    background-color: #FFFFFF;
+    height: 1px;
+    width: 150px;
+    margin: 0px auto;
+}
+
+.web-button {
+    width: 90%;
+    height: 110%;
+    background-color: #fff;
+    float: right;
+    text-align: center;
+}
+
+.web_t2 {
+    margin: 20px auto;
+    width: 120px;
+}
+
+.web-n {
+    margin-top: 20px;
+    height: 160px;
+    background-color: #fff;
+}
+
+/* .A_set1{
+    height: 300px;
+    background-color: #fff;
+    margin-top:20px;
+    margin-bottom: 60px;
+} */
+.A-img {
+    width: 97%;
+    height: 250px;
+    margin-top: 10px;
+}
+
+
+
+
+/*用户管理*/
+
+.A_set1 {
+    width: 92%;
+    height: 700px;
+    margin-top: 110px;
+    background-color: #fff;
+}
+
+.A_set2 {
+    width: 92%;
+    height: auto;
+    margin-top: 20px;
+    background-color: #fff;
+    margin-bottom: 60px;
+}
+
+.run_button {
+    width: 100%;
+    background-color: #3D97FF;
+    height: 23px;
+    color: #fff;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.delete_button {
+    width: 100%;
+    height: 23px;
+    background-color: #fff;
+    color: #6D6D6D;
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.hr_shu {
+    width: 1px;
+    height: 230px;
+    background-color: #E1E1E1;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.Afont1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #3A3A3A;
+    margin-left: 25px;
+    margin-top: 65px;
+    position: absolute;
+}
+
+.Afont2 {
+    font-size: 16px;
+    color: #707070;
+    margin-left: 25px;
+    margin-top: 100px;
+    position: absolute;
+}
+
+.A_img1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 35px;
+}
+
+.q_info {
+    border: #70707030 solid 1px;
+    width: 72%;
+}
+
+.back_button {
+    background-color: #fff;
+    border: 0;
+    margin-top: 80px;
+    width: 160px;
+}
+
+.back_button_font {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1296DB;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.back_button_img {
+    width: 30px;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.A_main_set {
+    margin-top: 20px;
+    background-color: #fff;
+    margin-bottom: 40px;
+}
+
+.web-button1 {
+    width: 90%;
+    height: 110%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.web-button2 {
+    width: 90%;
+    height: 110%;
+    background-color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.back_button1 {
+    background-color: #fff;
+    border: 0;
+    margin-top: 0px;
+    width: 240px;
+}
+
+.back_button_img1 {
+    width: 30px;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.back_button2 {
+    background-color: #fff;
+    border: 0;
+    margin-top: 80px;
+    width: 240px;
+}
+
+.A_setAq {
+    width: 92%;
+    height: auto;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.A_setCq {
+    width: 75%;
+    margin-top: 20px;
+    background-color: #fff;
+    margin-left: 6%;
+}
+
+.A_setCt {
+    width: 80%;
+    margin-top: 20px;
+    background-color: #fff;
+    margin-left: 6%;
+}
+
+.A_setCqs {
+    width: 90%;
+    margin-top: 10px;
+    background-color: #fff;
+    margin-left: 6%;
+}
+
+/*实验题库管理*/
+.D_set {
+    border: #B6B6B6 solid 1px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.D_button_del {
+    color: #fff;
+    border: 0;
+    background-color: #FF5353;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.D_button_stop {
+    color: #fff;
+    border: 0;
+    background-color: #3D97FF;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.D_hr {
+    background-color: #707070;
+    width: 40%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    height: 2px;
+    margin-top: 10px;
+}
+
+.D_p1 {
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 9px;
+    margin-top: 15px;
+}
+
+.D_p2 {
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.D_input1 {
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+
+    width: 190px;
+}
