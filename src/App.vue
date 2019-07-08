@@ -4,7 +4,7 @@
       <img alt="online judge logo" src="./assets/logo.png" style="width:2vw">
       <span>Online-Judge</span>
       <div class="routerBar">
-        <router-link to="/">主页</router-link>|
+        <router-link to="/home">主页</router-link>|
         <router-link to="/bank">题库</router-link>|
         <router-link to="/result">测试结果</router-link>|
         <router-link to="/person" v-if="this.$store.state.user.isLogin">个人中心</router-link>
@@ -54,7 +54,7 @@ export default {
       font-size: 0.8vw;
       color: #2c3e50;
       height: 3vw;
-      &.router-link-exact-active {
+      &.router-link-active {
         color: #42b983;
         padding-bottom: 5px solid lightblue;
       }

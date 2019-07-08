@@ -16,6 +16,10 @@
 
 export default [{
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     name: 'home',
     component: () => import('../views/Home.vue')
   },
@@ -25,6 +29,26 @@ export default [{
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/Bank/Bank.vue')
+    redirect: '/bank/class',
+    component: () => import('../views/Bank/Bank.vue'),
+    children: [{
+      path: 'class',
+      name: 'class',
+      component: () => import('../views/Bank/Class/Class.vue'),
+      children: [{
+        path: ':bankName',
+        name: 'eachClassBank',
+        component: () => import('../views/Bank/Class/EachClass.vue'),
+      }]
+    }, {
+      path: 'outclass',
+      name: 'outclass',
+      component: () => import('../views/Bank/OutClass/OutClass.vue'),
+      children: [{
+        path: ':bankName',
+        name: 'eachOutClassBank',
+        component: () => import('../views/Bank/OutClass/EachOutClass.vue'),
+      }]
+    }]
   },
 ]

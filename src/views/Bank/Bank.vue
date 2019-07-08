@@ -30,22 +30,21 @@
                 :active-name="page"
                 theme="light"
                 width="auto"
-                @on-select="changePage"
               >
                 <Submenu name="1">
                   <template slot="title">
                     <Icon type="ios-keypad" />课堂训练
                   </template>
-                  <MenuItem name="c">C语言程序设计</MenuItem>
+                  <MenuItem name="c" :to="{name:'eachClassBank',params: { bankName: 'c' }}">C语言程序设计</MenuItem>
                 </Submenu>
                 <Submenu name="2">
                   <template slot="title">
                     <Icon type="ios-list-box" />算法测试
                   </template>
-                  <MenuItem name="basic">基础练习</MenuItem>
-                  <MenuItem name="middle">算法入门</MenuItem>
-                  <MenuItem name="difficult">算法提高</MenuItem>
-                  <MenuItem name="charge">算法挑战</MenuItem>
+                  <MenuItem name="basic" :to="{name:'eachOutClassBank',params: { bankName: 'basic' }}">基础练习</MenuItem>
+                  <MenuItem name="middle" :to="{name:'eachOutClassBank',params: { bankName: 'middle' }}">算法入门</MenuItem>
+                  <MenuItem name="difficult" :to="{name:'eachOutClassBank',params: { bankName: 'difficult' }}">算法提高</MenuItem>
+                  <MenuItem name="charge" :to="{name:'eachOutClassBank',params: { bankName: 'charge' }}">算法挑战</MenuItem>
                 </Submenu>
               </Menu>
             </Sider>
@@ -66,19 +65,11 @@ export default {
   components: {},
   data() {
     return {
-      page: this.$route.name
+      page: this.$route.params.bankName
     };
   },
   created() {},
-  watch: {
-    "$route.name": function() {
-      this.page = this.$route.name;
-    }
-  },
   methods: {
-    changePage(pageName) {
-      this.$router.push({name:pageName});
-    }
   }
 };
 </script>
