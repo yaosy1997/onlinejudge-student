@@ -9,11 +9,17 @@
  * -----
  * Copyright 2019 - 2019 syyao, NJU_JLXY
  * HISTORY:
- * Date      	By	Comments
- * ----------	---	---------------------------------------------------------
+ * Date         	By  	Comments
+ * -------------	-----	---------------------------------------------------------
  * 
- * 30 06 2019	syyao	初始化
+ * 9th July 2019	syyao	增加对于未登录状态下访问题库页面的守卫
+ * 
+ * 9th July 2019	syyao	重定向bank的路由
+ * 
+ * 30th June 2019	syyao	初始化
  */
+
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './router'
@@ -29,21 +35,25 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start()
-    to
-    from
     let isLogin = store.state.user.isLogin
     if (isLogin === false) {
         store.dispatch('getUserInfo').then(info => {
             console.log(info)
-            next()
         })
+        if (to.name === "eachClassBank") {
+            next({name: "home"})
+            store.commit("setLoginFilter")
+            iView.LoadingBar.finish()
+            window.scrollTo(0, 0)
+        } else {
+            next()
+        }
     } else {
         next()
     }
 })
 
-router.afterEach(to => {
-    to
+router.afterEach(() => {
     iView.LoadingBar.finish()
     window.scrollTo(0, 0)
 })

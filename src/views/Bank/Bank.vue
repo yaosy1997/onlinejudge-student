@@ -12,6 +12,8 @@
  * Date         	By  	Comments
  * -------------	-----	---------------------------------------------------------
  * 
+ * 9th July 2019	syyao	使题库可以根据后台动态变化
+ * 
  * 7th July 2019	syyao	题库页面初始化
  */
 
@@ -35,16 +37,13 @@
                   <template slot="title">
                     <Icon type="ios-keypad" />课堂训练
                   </template>
-                  <MenuItem name="c" :to="{name:'eachClassBank',params: { bankName: 'c' }}">C语言程序设计</MenuItem>
+                  <MenuItem v-for="(classList,index) in bankList.class" :key="index" :name="classList.aka" :to="{name:'eachClassBank',params: { bankName: classList.aka }}">{{classList.name}}</MenuItem>
                 </Submenu>
                 <Submenu name="2">
                   <template slot="title">
                     <Icon type="ios-list-box" />算法测试
                   </template>
-                  <MenuItem name="basic" :to="{name:'eachOutClassBank',params: { bankName: 'basic' }}">基础练习</MenuItem>
-                  <MenuItem name="middle" :to="{name:'eachOutClassBank',params: { bankName: 'middle' }}">算法入门</MenuItem>
-                  <MenuItem name="difficult" :to="{name:'eachOutClassBank',params: { bankName: 'difficult' }}">算法提高</MenuItem>
-                  <MenuItem name="charge" :to="{name:'eachOutClassBank',params: { bankName: 'charge' }}">算法挑战</MenuItem>
+                  <MenuItem v-for="(classList,index) in bankList.outclass" :key="index" :name="classList.aka" :to="{name:'eachOutClassBank',params: { bankName: classList.aka }}">{{classList.name}}</MenuItem>
                 </Submenu>
               </Menu>
             </Sider>
@@ -65,7 +64,8 @@ export default {
   components: {},
   data() {
     return {
-      page: this.$route.params.bankName
+      page: this.$route.params.bankName,
+      bankList:this.$store.state.bank.bankList
     };
   },
   created() {},

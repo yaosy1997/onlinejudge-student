@@ -100,7 +100,6 @@ export default {
     "$store.state.user.loginFilter": function(newVal) {
       //拦截登录
       if (newVal === true) {
-        console.log(1);
         this.isShow = newVal;
       }
     }

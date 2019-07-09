@@ -11,8 +11,11 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ * 
+ * 9th July 2019	syyao	重定向bank页面
  */
 
+import store from '@/store'
 
 export default [{
     path: '/',
@@ -29,11 +32,12 @@ export default [{
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    redirect: '/bank/class',
+    redirect:'/bank/class/'+store.state.bank.bankList.class[0].aka,
     component: () => import('../views/Bank/Bank.vue'),
     children: [{
       path: 'class',
       name: 'class',
+      redirect:'/bank/class/'+store.state.bank.bankList.class[0].aka,
       component: () => import('../views/Bank/Class/Class.vue'),
       children: [{
         path: ':bankName',
@@ -43,6 +47,7 @@ export default [{
     }, {
       path: 'outclass',
       name: 'outclass',
+      redirect:'/bank/outclass/'+store.state.bank.bankList.outclass[0].aka,
       component: () => import('../views/Bank/OutClass/OutClass.vue'),
       children: [{
         path: ':bankName',
