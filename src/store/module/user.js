@@ -12,13 +12,16 @@
  * Date         	By  	Comments
  * -------------	-----	---------------------------------------------------------
  * 
+ * 10th July 2019	syyao	增加获取学生信息
+ * 
  * 4th July 2019	syyao	加入注册与短信
  */
 
 import {
     login,
     logon,
-    getBasicInfo,
+    ifload,
+    getUserInfo,
     getCaptcha
 } from '@/api/user'
 
@@ -29,8 +32,8 @@ export default {
         loginFilter: false
     },
     mutations: {
-        setLogin(state){
-            state.isLogin=true
+        setLogin(state) {
+            state.isLogin = true
         },
         setUserInfo(state, info) {
             state.info = info
@@ -44,60 +47,60 @@ export default {
         },
     },
     actions: {
-        handleLogin({commit},{username,password}){
+        handleLogin({ commit }, { username, password }) {
             return new Promise((resolve, reject) => {
-                login(username,password).then(res => {
-                  if(res.data.code==="200"){
-                      commit("setLogin")
-                      resolve("success")
-                  }else{
-                    resolve(res.data.data)
-                  }
+                login(username, password).then(res => {
+                    if (res.data.code === "200") {
+                        this.handleUserInfo()
+                        resolve("success")
+                    } else {
+                        resolve(res.data.data)
+                    }
                 }).catch(err => {
-                  reject(err)
+                    reject(err)
                 })
             })
         },
-        handleLogon({commit},{username,password,captcha}){
+        handleLogon({ commit }, { username, password, captcha }) {
             return new Promise((resolve, reject) => {
-                logon(username,password,captcha).then(res => {
-                  if(res.data.code==="200"){
-                      commit("setLogin")
-                      resolve("success")
-                  }else{
-                    resolve(res.data.data)
-                  }
+                logon(username, password, captcha).then(res => {
+                    if (res.data.code === "200") {
+                        this.handleUserInfo()
+                        resolve("success")
+                    } else {
+                        resolve(res.data.data)
+                    }
                 }).catch(err => {
-                  reject(err)
+                    reject(err)
                 })
             })
         },
-        handleGetCaptcha({commit},{username}){
+        handleGetCaptcha({ commit }, { username }) {
             return new Promise((resolve, reject) => {
                 getCaptcha(username).then(res => {
-                  if(res.data.code==="200"){
-                      resolve("success")
-                  }else{
-                    resolve(res.data.data)
-                  }
+                    if (res.data.code === "200") {
+                        resolve("success")
+                    } else {
+                        resolve(res.data.data)
+                    }
                 }).catch(err => {
-                  reject(err)
-                  commit
+                    reject(err)
+                    commit
                 })
             })
         },
-        getUserInfo({commit}) {
+        handleUserInfo({ commit }) {
             return new Promise((resolve, reject) => {
-                try {
-                    getBasicInfo().then(res => {
-                        if (res.data.data === '200') {
-                            commit('setUserInfo', res.data.data)
-                        }
+                getUserInfo().then(res => {
+                    if (res.data.data === '200') {
+                        commit('setUserInfo', res.data.data)
+                    }else{
                         resolve(res)
-                    })
-                } catch (error) {
-                    reject(error)
-                }
+                    }
+                }).catch(err=>{
+                    reject(err)
+                })
+
             })
         }
     }

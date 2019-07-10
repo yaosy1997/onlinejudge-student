@@ -82,6 +82,7 @@ export default {
   border-radius: 4px;
   overflow: hidden;
   padding-top: 5vw;
+  min-height: 100vh;
 }
 
 .layout-footer-center {

@@ -1,3 +1,20 @@
+/*
+ * File: App.vue
+ * Project: onlinejudge_student
+ * File Created: Wednesday, 3rd July 2019 3:42:39 pm
+ * Author: syyao yao__sy@163.com
+ * -----
+ * Last Modified: Wednesday, 10th July 2019 6:38:21 pm
+ * Modified By: syyao yao__sy@163.com
+ * -----
+ * Copyright 2019 - 2019 syyao, NJU_JLXY
+ * HISTORY:
+ * Date         	By  	Comments
+ * -------------	-----	---------------------------------------------------------
+ * 
+ * 10th July 2019	syyao	修改导航栏样式
+ */
+
 <template>
   <div id="app">
     <div id="nav">
@@ -43,7 +60,8 @@ export default {
   height: 5vw;
   line-height: 3vw;
   z-index: 1;
-  position: absolute;
+  position: fixed;
+  background-color: #f0f8ff4d;
   .routerBar {
     float: right;
     a {

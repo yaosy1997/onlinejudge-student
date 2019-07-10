@@ -25,6 +25,7 @@ import Router from 'vue-router'
 import routes from './router'
 import iView from 'iview'
 import store from '@/store'
+import {ifload} from '@/api/user'
 
 Vue.use(Router)
 
@@ -37,17 +38,23 @@ router.beforeEach((to, from, next) => {
     iView.LoadingBar.start()
     let isLogin = store.state.user.isLogin
     if (isLogin === false) {
-        store.dispatch('getUserInfo').then(info => {
-            console.log(info)
+        ifload().then(info => {
+            if (info.data.code === '201') {
+                store.commit("setLogin")
+                store.dispatch('handleUserInfo')
+                next()
+            } else {
+                if (to.name === "eachClassBank") {
+                    next({ name: "home" })
+                    store.commit("setLoginFilter")
+                    iView.LoadingBar.finish()
+                    window.scrollTo(0, 0)
+                } else {
+                    next()
+                }
+            }
         })
-        if (to.name === "eachClassBank") {
-            next({name: "home"})
-            store.commit("setLoginFilter")
-            iView.LoadingBar.finish()
-            window.scrollTo(0, 0)
-        } else {
-            next()
-        }
+
     } else {
         next()
     }

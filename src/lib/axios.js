@@ -20,8 +20,8 @@ import axios from 'axios'
 
 import store from '@/store'
 import router from '@/router'
-//每次传过去的cookie不变
-axios.defaults.withCredentials = true;
+
+
 
 class HttpRequest {
     constructor(baseUrl = baseURL) {
@@ -63,6 +63,8 @@ class HttpRequest {
     }
     request (options) {
         const instance = axios.create()
+        //每次传过去的sessionid不变
+        axios.defaults.withCredentials = true
         options = Object.assign(this.getInsideConfig(), options)
         this.interceptors(instance, options.url)
         return instance(options)

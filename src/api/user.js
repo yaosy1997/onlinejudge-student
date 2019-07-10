@@ -12,6 +12,8 @@
  * Date         	By  	Comments
  * -------------	-----	---------------------------------------------------------
  * 
+ * 10th July 2019	syyao	增加获取学生信息
+ * 
  * 4th July 2019	syyao	加入注册与短信接口
  * 
  * 3th July 2019	syyao	将要发送的数据构造成Form Data对象
@@ -32,7 +34,7 @@ function paramsSerializer(params) {
   return param
 }
 
-export const getBasicInfo = () => {
+export const ifload = () => {
   return axios.request({
     url: '/ifload',
     method: 'post'
@@ -81,5 +83,12 @@ export const getCaptcha = (username) => {
     url:'/get_message',
     method:'post',
     data
+  })
+}
+
+export const getUserInfo = ()=>{
+  return axios.request({
+    url:'/get_Student_Information',
+    method:'post'
   })
 }

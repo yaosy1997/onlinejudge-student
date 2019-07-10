@@ -24,7 +24,7 @@ export default [{
   {
     path: '/home',
     name: 'home',
-    component: () => import('../views/Home.vue')
+    component: () => import('@/views/Home.vue')
   },
   {
     path: '/bank',
@@ -33,27 +33,37 @@ export default [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     redirect:'/bank/class/'+store.state.bank.bankList.class[0].aka,
-    component: () => import('../views/Bank/Bank.vue'),
+    component: () => import('@/views/Bank/Bank.vue'),
     children: [{
       path: 'class',
       name: 'class',
       redirect:'/bank/class/'+store.state.bank.bankList.class[0].aka,
-      component: () => import('../views/Bank/Class/Class.vue'),
+      component: () => import('@/views/Bank/Class/Class.vue'),
       children: [{
         path: ':bankName',
         name: 'eachClassBank',
-        component: () => import('../views/Bank/Class/EachClass.vue'),
+        component: () => import('@/views/Bank/Class/EachClass.vue'),
       }]
     }, {
       path: 'outclass',
       name: 'outclass',
       redirect:'/bank/outclass/'+store.state.bank.bankList.outclass[0].aka,
-      component: () => import('../views/Bank/OutClass/OutClass.vue'),
+      component: () => import('@/views/Bank/OutClass/OutClass.vue'),
       children: [{
         path: ':bankName',
         name: 'eachOutClassBank',
-        component: () => import('../views/Bank/OutClass/EachOutClass.vue'),
+        component: () => import('@/views/Bank/OutClass/EachOutClass.vue'),
       }]
     }]
   },
+  {
+    path:'/result',
+    name:'result',
+    component: () => import('@/views/Result/Result.vue')
+  },
+  {
+    path:'/person',
+    name:'person',
+    component: () => import('@/views/Person/Person.vue')
+  }
 ]
