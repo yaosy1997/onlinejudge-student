@@ -74,6 +74,13 @@ export const logon = (username,passowrd,captcha) =>{
   })
 }
 
+export const logout = () =>{
+  return axios.request({
+    url:'/logout',
+    method:'post'
+  })
+}
+
 export const getCaptcha = (username) => {
   const data = paramsSerializer([{
     name:'phone',
@@ -91,4 +98,15 @@ export const getUserInfo = ()=>{
     url:'/get_Student_Information',
     method:'post'
   })
+}
+
+export const getPicture = () =>{
+  return axios.request({
+    url:'/get_picture',
+    method:'post'
+  })
+}
+
+export const getLeftInfo = () =>{
+  return axios.request()
 }

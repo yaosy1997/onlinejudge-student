@@ -12,6 +12,8 @@
  * Date         	By  	Comments
  * -------------	-----	---------------------------------------------------------
  * 
+ * 11th July 2019	syyao	修改学生信息获取方式
+ * 
  * 10th July 2019	syyao	增加获取学生信息
  * 
  * 4th July 2019	syyao	加入注册与短信
@@ -20,16 +22,18 @@
 import {
     login,
     logon,
-    ifload,
+    logout,
     getUserInfo,
-    getCaptcha
+    getCaptcha,
+    getPicture
 } from '@/api/user'
 
 export default {
     state: {
         info: {},
+        picture: '',
         isLogin: false,
-        loginFilter: false
+        loginFilter: false,
     },
     mutations: {
         setLogin(state) {
@@ -39,19 +43,28 @@ export default {
             state.info = info
             state.isLogin = true
         },
+        setUserPicture(state, info) {
+            state.picture = info
+        },
         setLoginFilter(state) {
             state.loginFilter = true;
             setTimeout(() => {
                 state.loginFilter = false
             }, 200)
         },
+        reset(state) {
+            state.info = {},
+            state.picture='',
+            state.isLogin=false,
+            state.loginFilter=false
+        }
     },
     actions: {
-        handleLogin({ commit }, { username, password }) {
+        handleLogin({ dispatch }, { username, password }) {
             return new Promise((resolve, reject) => {
                 login(username, password).then(res => {
                     if (res.data.code === "200") {
-                        this.handleUserInfo()
+                        dispatch('handleAllInfo')
                         resolve("success")
                     } else {
                         resolve(res.data.data)
@@ -61,15 +74,25 @@ export default {
                 })
             })
         },
-        handleLogon({ commit }, { username, password, captcha }) {
+        handleLogon({ dispatch }, { username, password, captcha }) {
             return new Promise((resolve, reject) => {
                 logon(username, password, captcha).then(res => {
                     if (res.data.code === "200") {
-                        this.handleUserInfo()
+                        dispatch('handleAllInfo')
                         resolve("success")
                     } else {
                         resolve(res.data.data)
                     }
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        },
+        handleLogout({ commit }) {
+            return new Promise((resolve, reject) => {
+                logout().then(() => {
+                        commit('reset')
+                        resolve("success")
                 }).catch(err => {
                     reject(err)
                 })
@@ -89,18 +112,40 @@ export default {
                 })
             })
         },
+        handleAllInfo({ dispatch }) {
+            return new Promise((resolve) => {
+                dispatch('handleUserInfo')
+                dispatch('handlePicure')
+                resolve("success")
+            })
+        },
         handleUserInfo({ commit }) {
             return new Promise((resolve, reject) => {
                 getUserInfo().then(res => {
-                    if (res.data.data === '200') {
+                    if (res.data.code === '200') {
                         commit('setUserInfo', res.data.data)
-                    }else{
+                        resolve("success")
+                    } else {
                         resolve(res)
                     }
-                }).catch(err=>{
+                }).catch(err => {
                     reject(err)
                 })
 
+            })
+        },
+        handlePicure({ commit }) {
+            return new Promise((resolve, reject) => {
+                getPicture().then(res => {
+                    if (res.data.code === '200') {
+                        commit('setUserPicture', '/imageApi' + res.data.data)
+                        resolve("success")
+                    } else {
+                        resolve(res)
+                    }
+                }).catch(err => {
+                    reject(err)
+                })
             })
         }
     }

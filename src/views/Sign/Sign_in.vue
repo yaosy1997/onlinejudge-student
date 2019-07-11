@@ -71,7 +71,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["handleLogin", "getUserInfo"]),
+    ...mapActions(["handleLogin"]),
     login: function() {
       let _this = this;
 
@@ -97,7 +97,6 @@ export default {
         if (msg === "success") {
           this.$Message.success("登陆成功");
           this.$emit("update:isShow", false);
-          this.getUserInfo();
         } else {
           this.$Message.error(msg);
         }

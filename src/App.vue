@@ -18,27 +18,52 @@
 <template>
   <div id="app">
     <div id="nav">
-      <img alt="online judge logo" src="./assets/logo.png" style="width:2vw">
+      <img alt="online judge logo" src="./assets/logo.png" style="width:2vw" />
       <span>Online-Judge</span>
       <div class="routerBar">
         <router-link to="/home">主页</router-link>|
         <router-link to="/bank">题库</router-link>|
         <router-link to="/result">测试结果</router-link>|
-        <router-link to="/person" v-if="this.$store.state.user.isLogin">个人中心</router-link>
+        <Dropdown v-if="this.$store.state.user.isLogin" @on-click="handleDownClick">
+          <router-link to="/person">
+            <Avatar :src="this.$store.state.user.picture" />
+            <Icon type="ios-arrow-down"></Icon>
+          </router-link>
+          <DropdownMenu slot="list">
+            <DropdownItem name='person'>个人中心</DropdownItem>
+            <DropdownItem namw='star'>收藏夹</DropdownItem>
+            <DropdownItem divided name='logout'>退出登录</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+
         <a v-on:click="$store.commit('setLoginFilter')" v-else>登录/注册</a>
       </div>
     </div>
     <sign></sign>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import sign from './views/Sign/Sign'
+import sign from "./views/Sign/Sign";
+import { mapActions } from "vuex";
 export default {
   name: "App",
-  components:{
+  components: {
     sign
+  },
+  methods:{
+    ...mapActions(["handleLogout"]),
+    handleDownClick(name){
+      console.log(name)
+      if(name==='logout'){
+        this.handleLogout().then(msg => {
+            this.$router.push({name:'home'})
+        })
+        return
+      }
+      this.$router.push({name:name})
+    }
   }
 };
 </script>

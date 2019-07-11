@@ -26,6 +26,7 @@ import routes from './router'
 import iView from 'iview'
 import store from '@/store'
 import {ifload} from '@/api/user'
+import { sync } from 'glob';
 
 Vue.use(Router)
 
@@ -40,9 +41,8 @@ router.beforeEach((to, from, next) => {
     if (isLogin === false) {
         ifload().then(info => {
             if (info.data.code === '201') {
-                store.commit("setLogin")
-                store.dispatch('handleUserInfo')
-                next()
+                store.dispatch('handleAllInfo').then(next())
+                 
             } else {
                 if (to.name === "eachClassBank") {
                     next({ name: "home" })
