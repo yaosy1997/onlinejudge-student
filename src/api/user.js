@@ -28,7 +28,7 @@ import crypto from '@/util/crypto'
 //将要发送的数据构造成Form Data对象
 function paramsSerializer(params) {
   let param = new URLSearchParams()
-  for (let i=0; i < params.length; i++) {
+  for (let i = 0; i < params.length; i++) {
     param.append(params[i].name, params[i].value)
   }
   return param
@@ -53,60 +53,84 @@ export const login = (username, passowrd) => {
     url: '/Weblogin',
     method: 'post',
     data
-   })
+  })
 }
 
-export const logon = (username,passowrd,captcha) =>{
+export const logon = (username, passowrd, captcha) => {
   const data = paramsSerializer([{
-    name:"username",
-    value:username
-  },{
-    name:"password",
-    value:crypto.Encrypt(passowrd)
-  },{
-    name:"captcha",
-    value:captcha
+    name: "username",
+    value: username
+  }, {
+    name: "password",
+    value: crypto.Encrypt(passowrd)
+  }, {
+    name: "captcha",
+    value: captcha
   }])
   return axios.request({
-    url:'/register',
-    method:'post',
+    url: '/register',
+    method: 'post',
     data
   })
 }
 
-export const logout = () =>{
+export const logout = () => {
   return axios.request({
-    url:'/logout',
-    method:'post'
+    url: '/logout',
+    method: 'post'
   })
 }
 
 export const getCaptcha = (username) => {
   const data = paramsSerializer([{
-    name:'phone',
-    value:username
+    name: 'phone',
+    value: username
   }])
   return axios.request({
-    url:'/get_message',
-    method:'post',
+    url: '/get_message',
+    method: 'post',
     data
   })
 }
 
-export const getUserInfo = ()=>{
+export const getUserInfo = () => {
   return axios.request({
-    url:'/get_Student_Information',
+    url: '/get_Student_Information',
+    method: 'post'
+  })
+}
+
+export const getPicture = () => {
+  return axios.request({
+    url: '/get_picture',
+    method: 'post'
+  })
+}
+
+export const getLeftInfo = () => {
+  return axios.request({
+    url: '/left_Information',
+    method: 'post'
+  })
+}
+
+export const getSummrize = () => {
+  return axios.request({
+    url: '/summarize',
+    method: 'post'
+  })
+}
+
+export const getQuestionProcess = () => {
+  return axios.request({
+    url:'/question_difficult_num',
     method:'post'
   })
 }
 
-export const getPicture = () =>{
+export const getLeastFiveQuestion = () => {
   return axios.request({
-    url:'/get_picture',
+    url:'/five_student',
     method:'post'
   })
-}
-
-export const getLeftInfo = () =>{
-  return axios.request()
 }

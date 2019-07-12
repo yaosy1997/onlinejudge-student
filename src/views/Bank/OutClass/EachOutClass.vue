@@ -27,6 +27,11 @@ export default {
       bankname: this.$route.params.bankName
     };
   },
+  watch:{
+    '$route.params.bankName':function(){
+      this.bankname=this.$route.params.bankName
+    }
+  }
   
 };
 </script>

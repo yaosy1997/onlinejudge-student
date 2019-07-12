@@ -35,14 +35,18 @@ const router = new Router({
     mode: 'history'
 })
 
+async function getAllInfo(next){
+    await store.dispatch('handleAllInfo')
+    next()
+}
+
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start()
     let isLogin = store.state.user.isLogin
     if (isLogin === false) {
         ifload().then(info => {
             if (info.data.code === '201') {
-                store.dispatch('handleAllInfo').then(next())
-                 
+               getAllInfo(next)
             } else {
                 if (to.name === "eachClassBank") {
                     next({ name: "home" })

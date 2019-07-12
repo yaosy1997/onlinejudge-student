@@ -25,12 +25,20 @@ import {
     logout,
     getUserInfo,
     getCaptcha,
-    getPicture
+    getPicture,
+    getLeftInfo,
+    getSummrize,
+    getQuestionProcess,
+    getLeastFiveQuestion
 } from '@/api/user'
 
 export default {
     state: {
         info: {},
+        leftInfo:{},
+        summrize:{},
+        questionProcess:{},
+        leastFiveQuestion:{},
         picture: '',
         isLogin: false,
         loginFilter: false,
@@ -43,6 +51,18 @@ export default {
             state.info = info
             state.isLogin = true
         },
+        setLeftInfo(state,info){
+            state.leftInfo=info
+        },
+        setSummrize(state,info){
+            state.summrize=info
+        },
+        setQuestionProcess(state,info){
+            state.questionProcess=info
+        },
+        setLeastFiveQuestion(state,info){
+            state.leastFiveQuestion=info
+        },
         setUserPicture(state, info) {
             state.picture = info
         },
@@ -54,6 +74,9 @@ export default {
         },
         reset(state) {
             state.info = {},
+            state.leftInfo={},
+            state.summrize={},
+            state.questionProcess={},
             state.picture='',
             state.isLogin=false,
             state.loginFilter=false
@@ -112,10 +135,15 @@ export default {
                 })
             })
         },
+        //一次性获取所有请求
         handleAllInfo({ dispatch }) {
             return new Promise((resolve) => {
                 dispatch('handleUserInfo')
                 dispatch('handlePicure')
+                dispatch('handleLeftInfo')
+                dispatch('handleSummrize')
+                //dispatch('handleQuestionProcess')
+                dispatch('handleLeastFiveQuestion')
                 resolve("success")
             })
         },
@@ -144,6 +172,62 @@ export default {
                         resolve(res)
                     }
                 }).catch(err => {
+                    reject(err)
+                })
+            })
+        },
+        handleLeftInfo({commit}){
+            return new Promise((resolve,reject)=>{
+                getLeftInfo().then(res=>{
+                    if(res.data.code==='200'){
+                        commit('setLeftInfo',res.data.data)
+                        resolve('success')
+                    }else{
+                        resolve(res)
+                    }
+                }).catch(err=>{
+                    reject(err)
+                })
+            })
+        },
+        handleSummrize({commit}){
+            return new Promise((resolve,reject)=>{
+                getSummrize().then(res=>{
+                    if(res.data.code==='200'){
+                        commit('setSummrize',res.data.data)
+                        resolve('success')
+                    }else{
+                        resolve(res)
+                    }
+                }).catch(err=>{
+                    reject(err)
+                })
+            })
+        },
+        handleQuestionProcess({commit}){
+            return new Promise((resolve,reject)=>{
+                getQuestionProcess().then(res=>{
+                    if(res.data.code==='200'){
+                        commit('setQuestionProcess',res.data.data)
+                        resolve('success')
+                    }else{
+                        resolve(res)
+                    }
+                }).catch(err=>{
+                    reject(err)
+                })
+            })
+        },
+        handleLeastFiveQuestion({commit}){
+            return new Promise((resolve,reject)=>{
+                getLeastFiveQuestion().then(res=>{
+                    if(res.data.code==='200'){
+                        commit('setLeastFiveQuestion',res.data.data)
+                        resolve('success')
+                    }else{
+                        resolve(res)
+                    }
+                }).catch(err=>{
                     reject(err)
                 })
             })
