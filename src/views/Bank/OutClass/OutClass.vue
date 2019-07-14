@@ -15,15 +15,25 @@
  * 8th July 2019	syyao	课外习题界面初始化
  */
  <template>
-  <div>
-    <div>this is outclass</div>
+  <div >
+    <Breadcrumb style="text-align:left" separator=">">
+        <BreadcrumbItem :to="{name:'outclass'}">算法测试</BreadcrumbItem>
+        <BreadcrumbItem>{{linkName}}</BreadcrumbItem>
+    </Breadcrumb>
     <router-view />
   </div>
 </template>
 
  <script>
 export default {
-  name: "outclass"
+  name: "outclass",
+  computed:{
+    linkName(){
+      return this.$store.state.bank.bankList.outclass.find((arr)=>{
+        return arr.aka === this.$route.params.bankName
+      }).name
+    }
+  }
 };
 </script>
  
