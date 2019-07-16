@@ -18,8 +18,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <img alt="online judge logo" src="./assets/logo.png" style="width:2vw" />
-      <span>Online-Judge</span>
+      <div style="margin:0 auto;width:60%;">
+        <Row style="width:40%;display: inline-block;">
+          <i-col span="4">
+            <img alt="online judge logo" src="./assets/logo.png" style="width:2.5vw;vertical-align: middle;" />
+          </i-col>
+          <i-col span="20">
+            <p style="font-size:18px;font-weight:800;">Online Judge</p>
+          </i-col>
+        </Row>
       <div class="routerBar">
         <router-link to="/home">主页</router-link>|
         <router-link to="/bank">题库</router-link>|
@@ -37,6 +44,8 @@
         </Dropdown>
 
         <a v-on:click="$store.commit('setLoginFilter')" v-else>登录/注册</a>
+
+        </div>
       </div>
     </div>
     <sign></sign>

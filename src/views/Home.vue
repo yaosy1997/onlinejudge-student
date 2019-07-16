@@ -20,8 +20,8 @@
 <template>
   <div class="index img1 index1" style="text-align:left;">
     <Row type="flex" justify="center" align="middle" style="margin-top:-40px">
-      <Col span="24">
-        <div style="margin-left:20%;">
+      <i-col span="24">
+        <div style="margin:0 auto;width:60%;">
           <!-- <span 
             style="font-weight:600;font-size:30px;background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);z-index:1000;-webkit-background-clip: text;
           -webkit-text-fill-color: transparent;border-bottom:1px solid #01edc9;padding:0 0em 0.5em 0;">WELCOME TO</span>-->
@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-      </Col>
+      </i-col>
 
       <Footer
         class="layout-footer-center"
