@@ -18,26 +18,49 @@
  */
 
 <template>
-    <div style="margin-top:1vw">
-       <outClassTable :QuestionData="data" :setPage="page" />
-    </div>
+  <div style="margin-top:1vw">
+    <outClassTable :QuestionData="data" :setPage="page" />
+  </div>
 </template>
 
 <script>
-import outClassTable from '@/components/EachOutClass/OutClassTable.vue'
+import outClassTable from "@/components/EachOutClass/OutClassTable.vue";
+import { initOutClass } from "@/api/api.js";
 export default {
   name: "eachOutClassBank",
-  components:{outClassTable},
+  components: { outClassTable },
   data() {
     return {
       bankname: this.$route.params.bankName,
-      data:[],
-      page:'1',
+      data: [],
+      page:'1' 
+    };
+  },
+  created() {
+    initOutClass(this.bankname).then(msg => {
+      if (msg.data.code === "200") {
+        this.data = msg.data.data;
+      }
+    });
+  },
+  mounted() {
+    if (this.$route.query.page) {
+      this.page = this.$route.query.page;
     }
   },
   watch: {
+    '$route.query.page':function(){
+      this.page=this.$route.query.page
+    },
     "$route.params.bankName": function() {
       this.bankname = this.$route.params.bankName;
+      this.page='1'
+      this.data = []
+      initOutClass(this.bankname).then(msg => {
+        if (msg.data.code === "200") {
+          this.data = msg.data.data;
+        }
+      });
     }
   }
 };

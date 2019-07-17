@@ -12,6 +12,8 @@
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
  * 
+ * 17th July 2019	syyao	增加做题页面
+ * 
  * 9th July 2019	syyao	重定向bank页面
  */
 
@@ -53,6 +55,33 @@ export default [{
         path: ':bankName',
         name: 'eachOutClassBank',
         component: () => import('@/views/Bank/OutClass/EachOutClass.vue'),
+      }]
+    }]
+  },
+  {
+    path:'/coding',
+    name:'coding',
+    redirect:'/error',
+    component:()=>import('@/views/Code/Code.vue'),
+    children:[{
+      path: 'class',
+      name: 'class',
+      redirect:'/error',
+      component: () => import('@/views/Code/Class/ClassCode.vue'),
+      children: [{
+        path: ':questionId',
+        name: 'eachClassCode',
+        component: () => import('@/views/Code/Class/EachClassCode.vue'),
+      }]
+    }, {
+      path: 'outclass',
+      name: 'outclass',
+      redirect:'/error',
+      component: () => import('@/views/Code/OutClass/OutClassCode.vue'),
+      children: [{
+        path: ':questionId',
+        name: 'eachOutClassCode',
+        component: () => import('@/views/Code/OutClass/EachOutClassCode.vue'),
       }]
     }]
   },

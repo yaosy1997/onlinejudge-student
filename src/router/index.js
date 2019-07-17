@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
             if (info.data.code === '201') {
                getAllInfo(next)
             } else {
-                if (to.name === "eachClassBank") {
+                if (to.name === "coding") {
                     next({ name: "home" })
                     store.commit("setLoginFilter")
                     iView.LoadingBar.finish()

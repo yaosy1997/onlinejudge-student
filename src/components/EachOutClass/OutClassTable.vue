@@ -135,7 +135,7 @@ export default {
         }
       ],
       data: [],
-      allData: this.QuestionData,
+      allData: [],
       pageNum: 1,
       pageSize: 15
     };
@@ -147,9 +147,9 @@ export default {
         return [];
       }
     },
-    setPage:{
-        type:String,
-        default:'1'
+    setPage: {
+      type: String,
+      default: "1"
     }
   },
   created() {
@@ -163,10 +163,15 @@ export default {
       return this.allData.length;
     }
   },
-  watch:{
-      setPage(val){
-          this.handlePage(parseInt(val))
-      }
+  watch: {
+    setPage(val) {
+        this.handlePage(parseInt(val));
+    },
+    QuestionData(val) {
+      this.allData = val;
+      this.setData();
+      this.handlePage(parseInt(this.pageNum));
+    }
   },
   methods: {
     handlePage(value) {
@@ -174,7 +179,11 @@ export default {
       let _end = value * this.pageSize;
       this.data = this.allData.slice(_start, _end);
       this.pageNum = value;
-      
+      this.$router.push({
+        query: {
+          page: this.pageNum
+        }
+      });
     },
     setData() {
       let pagedata = this.allData;
