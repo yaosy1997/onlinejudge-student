@@ -91,7 +91,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.test(params.index);
+                      this.test(params.row.question_number);
                     }
                   }
                 },
@@ -149,7 +149,7 @@ export default {
     },
     setPage: {
       type: String,
-      default: "1"
+      default:'1'
     }
   },
   created() {
@@ -193,6 +193,10 @@ export default {
       } else {
         this.data = pagedata.slice(0, this.pageSize);
       }
+    },
+    test(index){
+      console.log(index)
+      this.$router.push({name:'eachOutClassCode',params:{questionId:index}})
     }
   }
 };

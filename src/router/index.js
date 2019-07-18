@@ -26,7 +26,6 @@ import routes from './router'
 import iView from 'iview'
 import store from '@/store'
 import {ifload} from '@/api/user'
-import { sync } from 'glob';
 
 Vue.use(Router)
 
@@ -48,8 +47,11 @@ router.beforeEach((to, from, next) => {
             if (info.data.code === '201') {
                getAllInfo(next)
             } else {
-                if (to.name === "coding") {
-                    next({ name: "home" })
+                if (to.name === "eachOutClassCode") {
+                    iView.Message.error('请先登录')
+                    if(from.name===to.name || from.path==='/'){
+                        next({name:'home'})
+                    }
                     store.commit("setLoginFilter")
                     iView.LoadingBar.finish()
                     window.scrollTo(0, 0)

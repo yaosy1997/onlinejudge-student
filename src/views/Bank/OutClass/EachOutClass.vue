@@ -33,7 +33,7 @@ export default {
     return {
       bankname: this.$route.params.bankName,
       data: [],
-      page:'1' 
+      page:'1'
     };
   },
   created() {
@@ -50,7 +50,7 @@ export default {
   },
   watch: {
     '$route.query.page':function(){
-      this.page=this.$route.query.page
+      this.page=this.$route.query.page.toString()
     },
     "$route.params.bankName": function() {
       this.bankname = this.$route.params.bankName;
