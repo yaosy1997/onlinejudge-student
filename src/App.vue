@@ -93,7 +93,7 @@ export default {
   width: 100%;
   height: 5vw;
   line-height: 3vw;
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   background-color: #f0f8ff4d;
   .routerBar {

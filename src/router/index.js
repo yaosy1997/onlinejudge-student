@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
             if (info.data.code === '201') {
                getAllInfo(next)
             } else {
-                if (to.name === "eachOutClassCode") {
+                if (to.name === "eachOutClassCode" || to.name === "eachClassCode") {
                     iView.Message.error('请先登录')
                     if(from.name===to.name || from.path==='/'){
                         next({name:'home'})

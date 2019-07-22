@@ -16,7 +16,6 @@
  */
  <template>
   <div>
-    <div>this is class</div>
     <router-view />
   </div>
 </template>
