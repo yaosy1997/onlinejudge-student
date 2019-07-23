@@ -7,17 +7,17 @@
                 width="1000"
                 placement="left"
                 title="参考答案">
-            <Answer
+            <!-- <Answer
                     :id="answer.questionId"
                     :qtype="answer.questiontype"
                     :info="answer.info"
-            />
+            /> -->
         </Drawer>
         <div style="float: left">
             <div v-if="state==='success'">
                 <img
                         class="state"
-                        src="../../../images/pass.png">
+                        src="../../assets/pass.png">
             </div>
             <!--<div v-else-if="state==='debug'">-->
                 <!--<img-->
@@ -27,13 +27,13 @@
             <div v-else>
                 <img
                         class="state"
-                        src="../../../images/nostate.png">
+                        src="../../assets/nostate.png">
             </div>
         </div>
         <div style="float: left">
             <img
                     style="width: 17px;height: 17px;margin-left: 15px"
-                    src="../../../images/code.png">
+                    src="../../assets/code.png">
         </div>
         <div style="float: left">
             <Button
@@ -55,14 +55,9 @@
 </template>
 
 <script>
-    import Answer from '../CourceAnswer';
-    import ApiError from "../../../js/ApiError";
+    // import Answer from '../Answer';
 
     export default {
-        components: {Answer},
-        comments:{
-            Answer
-        },
         name: 'Questionline',
         props: {
             question: {

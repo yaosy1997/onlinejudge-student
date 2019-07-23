@@ -33,11 +33,17 @@
                 theme="light"
                 width="auto"
               >
-                <Submenu name="1">
+                <Submenu name="1" v-if="this.$store.state.user.isLogin">
                   <template slot="title">
                     <Icon type="ios-keypad" />课堂训练
                   </template>
-                  <MenuItem v-for="(classList,index) in bankList.class" :key="index" :name="classList.aka" :to="{name:'eachClassBank',params: { bankName: classList.aka }}">{{classList.name}}</MenuItem>
+                  <MenuItem  v-for="(classList,index) in bankList.class" :key="index" :name="classList.aka" :to="{name:'eachClassBank',params: { bankName: classList.aka }}">{{classList.name}}</MenuItem>
+                </Submenu>
+                <Submenu name="1" v-else>
+                  <template slot="title">
+                    <Icon type="ios-keypad" />课堂训练
+                  </template>
+                  <MenuItem v-on:click.native="$store.commit('setLoginFilter')">登录查看课内习题</MenuItem>
                 </Submenu>
                 <Submenu name="2">
                   <template slot="title">

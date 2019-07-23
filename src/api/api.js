@@ -37,3 +37,15 @@ export const initOutClass =(type)=>{
         data
     })
 }
+
+export const initClass = (kind) =>{
+  const data = paramsSerializer([{
+    name:'kind',
+    value:kind
+  }])
+  return axios.request({
+    url:'/cBank',
+    method:'post',
+    data
+  })
+}
