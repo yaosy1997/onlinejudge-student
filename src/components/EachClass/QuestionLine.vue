@@ -102,8 +102,8 @@
         methods: {
             test() {
                 this.$router.push({
-                    name: 'testCourse',
-                    params: { questionNumber: this.id}
+                    name: 'eachClassCode',
+                    params: { questionId: this.id}
                 });
             },
             showAnswer(){

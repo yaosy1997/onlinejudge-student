@@ -64,7 +64,7 @@ export default [{
     component:()=>import('@/views/Code/Code.vue'),
     children:[{
       path: 'class',
-      name: 'class',
+      name: 'codeclass',
       redirect:'/error',
       component: () => import('@/views/Code/Class/ClassCode.vue'),
       children: [{
@@ -74,7 +74,7 @@ export default [{
       }]
     }, {
       path: 'outclass',
-      name: 'outclass',
+      name: 'codeoutclass',
       redirect:'/error',
       component: () => import('@/views/Code/OutClass/OutClassCode.vue'),
       children: [{
@@ -93,5 +93,10 @@ export default [{
     path:'/person',
     name:'person',
     component: () => import('@/views/Person/Person.vue')
+  },
+  {
+    path:'/error',
+    name:'error',
+    component: () => import('@/views/Error/Error.vue')
   }
 ]

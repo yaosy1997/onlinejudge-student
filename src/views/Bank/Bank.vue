@@ -43,7 +43,7 @@
                   <template slot="title">
                     <Icon type="ios-keypad" />课堂训练
                   </template>
-                  <MenuItem v-on:click.native="$store.commit('setLoginFilter')">登录查看课内习题</MenuItem>
+                  <MenuItem name="none" v-on:click.native="$store.commit('setLoginFilter')">登录查看课内习题</MenuItem>
                 </Submenu>
                 <Submenu name="2">
                   <template slot="title">
@@ -75,8 +75,13 @@ export default {
     };
   },
   created() {},
-  methods: {
-  }
+  watch:{
+    '$route.params.bankName':function(){
+      this.page=this.$route.params.bankName
+    }
+  },
+  methods: {},
+
 };
 </script>
 

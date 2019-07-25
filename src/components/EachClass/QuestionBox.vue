@@ -20,8 +20,8 @@
         <div v-else />
       </div>
     </div>
-    <div v-for="ques in question" :key="ques.id" style="width: 100%">
-      <Qline :question="ques" />
+    <div class="questionBox" style="width: 100%" >
+      <Qline :question="ques" v-for="ques in question" :key="ques.id" />
     </div>
   </div>
 </template>
@@ -111,5 +111,13 @@ export default {
 .state {
   width: 80px;
   height: 80px;
+}
+
+.questionBox {
+  display: none;
+}
+
+.border:hover .questionBox{
+  display: inline;
 }
 </style>

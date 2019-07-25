@@ -175,6 +175,10 @@ export default {
   },
   methods: {
     handlePage(value) {
+      let totalPage=Math.ceil(this.total/this.pageSize)
+      if(totalPage<value){
+        this.$router.push({name:'error'})
+      }
       let _start = (value - 1) * this.pageSize;
       let _end = value * this.pageSize;
       this.data = this.allData.slice(_start, _end);
@@ -195,7 +199,6 @@ export default {
       }
     },
     test(index){
-      console.log(index)
       this.$router.push({name:'eachOutClassCode',params:{questionId:index}})
     }
   }

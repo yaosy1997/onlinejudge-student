@@ -16,7 +16,7 @@
  */
 
  <template>
-     <div>this is coding
+     <div class="layout">this is coding
          <router-view/>
      </div>
  </template>
@@ -27,4 +27,9 @@
  }
  </script>
  
+ <style lang="scss" scoped>
+ .layout{
+     padding-top: 5vw;
+ }
+ </style>
  
