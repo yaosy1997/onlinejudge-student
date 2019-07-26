@@ -36,20 +36,20 @@
                     src="../../assets/code.png">
         </div>
         <div style="float: left">
-            <Button
+            <a
                     type="text"
                     style="margin-left: 15px;margin-top: -7px"
-                    @click="test">{{ name }}</Button>
+                    @click="test">{{ name }}</a>
         </div>
         <div style="float: right">
 
-            <Button v-if="state==='success'"
+            <a v-if="state==='success'"
                     type="text"
                     style="margin-left: 15px;margin-top: -2px"
                     v-on:click="showAnswer"
-            >查看答案</Button>
+            >查看答案</a>
 
-            <span>提交时间：{{ time }}</span>
+            <span style="margin-left:15px">提交时间：{{ time }}</span>
         </div>
     </div>
 </template>
@@ -126,5 +126,13 @@
     .state {
         width: 15px;
         height: 15px;
+    }
+
+    a{
+        color: black
+    }
+
+    a:hover{
+        color: #2c3e50;
     }
 </style>

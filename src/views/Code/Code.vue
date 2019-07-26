@@ -16,9 +16,17 @@
  */
 
  <template>
-     <div class="layout">this is coding
-         <router-view/>
-     </div>
+      <div class="layout">
+    <Layout style="margin-right: auto; margin-left: auto;width: 80vw">
+      <Layout :style="{padding: '0 50px'}">
+        <!-- <Breadcrumb :style="{margin: '16px 0'}">
+          <BreadcrumbItem>题库</BreadcrumbItem>
+        </Breadcrumb>-->
+              <router-view />
+      </Layout>
+      <Footer class="layout-footer-center" style="height:80px;"></Footer>
+    </Layout>        
+  </div>
  </template>
 
  <script>
@@ -28,8 +36,15 @@
  </script>
  
  <style lang="scss" scoped>
- .layout{
-     padding-top: 5vw;
- }
+.layout {
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  padding-top: 5vw;
+  min-height: 100vh;
+}
+
  </style>
  
