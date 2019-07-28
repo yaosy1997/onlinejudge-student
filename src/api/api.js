@@ -49,3 +49,15 @@ export const initClass = (kind) =>{
     data
   })
 }
+
+export const initClassQuestion = (id) =>{
+  const data = paramsSerializer([{
+    name:'id',
+    value:id
+  }])
+  return axios.request({
+    url:'/init_course_question',
+    method:'post',
+    data
+  })
+}
