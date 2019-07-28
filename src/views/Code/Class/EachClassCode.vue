@@ -17,7 +17,7 @@
 
  <template>
     <Row>
-        <i-col span="18">
+        <i-col span="24">
             <div style="margin-left:30px;margin-top:10px;">
                 <h2 style="font-weight:400;color: #2E8FFF">{{ text1.question_name }}</h2>
                 <!--<textarea  class="text-area" ></textarea>-->
@@ -31,12 +31,12 @@
                 />
             </div>
         </i-col>
-        <i-col span="6">
+        <!-- <i-col span="6">
             <div style="float: right;margin-right: 50px">
                 题目难度：
                 <Rate :count="3" v-model="lev" disabled />
             </div>
-        </i-col>
+        </i-col> -->
     </Row>
 </template>
  
@@ -85,7 +85,7 @@ export default {
 <style lang="scss" scoped>
 .text-area1 /deep/ textarea {
   margin-top: 15px;
-  width: 80%;
+  width: 95%;
   color: #666666;
   line-height: 24px;
   letter-spacing: 1px;

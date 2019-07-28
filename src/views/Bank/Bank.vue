@@ -19,7 +19,7 @@
 
 <template>
   <div class="layout">
-    <Layout style="margin-right: auto; margin-left: auto;width: 90vw">
+    <Layout style="margin-right: auto; margin-left: auto;width: 78vw">
       <Layout :style="{padding: '0 50px'}">
         <!-- <Breadcrumb :style="{margin: '16px 0'}">
           <BreadcrumbItem>题库</BreadcrumbItem>
