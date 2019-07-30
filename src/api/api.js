@@ -26,38 +26,59 @@ function paramsSerializer(params) {
   return param
 }
 
-export const initOutClass =(type)=>{
-    const data = paramsSerializer([{
-        name: "difficult",
-        value: type
-      }])
-    return axios.request({
-        url:'/init_bank',
-        method:'post',
-        data
-    })
-}
-
-export const initClass = (kind) =>{
+export const initOutClass = (type) => {
   const data = paramsSerializer([{
-    name:'kind',
-    value:kind
+    name: "difficult",
+    value: type
   }])
   return axios.request({
-    url:'/cBank',
-    method:'post',
+    url: '/init_bank',
+    method: 'post',
     data
   })
 }
 
-export const initClassQuestion = (id) =>{
+export const initClass = (kind) => {
   const data = paramsSerializer([{
-    name:'id',
-    value:id
+    name: 'kind',
+    value: kind
   }])
   return axios.request({
-    url:'/init_course_question',
-    method:'post',
+    url: '/cBank',
+    method: 'post',
+    data
+  })
+}
+
+export const initClassQuestion = (id) => {
+  const data = paramsSerializer([{
+    name: 'id',
+    value: id
+  }])
+  return axios.request({
+    url: '/init_course_question',
+    method: 'post',
+    data
+  })
+}
+
+export const judgeCode = (code, lanauge, id, status) => {
+  const data = paramsSerializer([{
+    name: 'file',
+    value: code
+  }, {
+    name: 'language',
+    value: lanauge
+  }, {
+    name: 'question_id',
+    value: id
+  }, {
+    name: 'status',
+    value: status
+  }])
+  return axios.request({
+    url: '/gogogo',
+    method: 'post',
     data
   })
 }

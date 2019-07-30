@@ -109,6 +109,8 @@
   import "codemirror/addon/fold/foldcode.js";
   import "codemirror/addon/edit/closebrackets.js";
 
+  import {judgeCode} from '@/api/api.js'
+
   export default {
     name: "classCode",
     components: {
@@ -216,12 +218,7 @@
         this.$Message.success("提交成功");
         this.isPost = "正在进行判题";
         let _this = this;
-        let Param = new URLSearchParams();
-        Param.append("file", this.answer);
-        Param.append("language", this.language);
-        Param.append("question_id", this.$route.params.questionNumber);
-        Param.append("status", "on");
-        this.ajax.post(this.postIp + "/gogogo", Param).then(function (msg) {
+        judgeCode(this.answer,this.language,this.$route.params.questionId,'on').then( msg => {
           _this.step.current = 2;
           _this.step.status = "finish";
           _this.$nextTick(() => {

@@ -38,7 +38,7 @@ export default {
         {
           title: "题号",
           key: "question_number",
-          width: 100
+         // width: 100
         },
         {
           title: "题目",
@@ -48,7 +48,7 @@ export default {
         {
           title: "ac率",
           key: "ac",
-          width: 100,
+         // width: 100,
           render: (h, params) => {
             return h("div", parseInt(params.row.ac * 100) + "%");
           }
@@ -56,7 +56,7 @@ export default {
         {
           title: "难度",
           key: "difficulty",
-          width: 130,
+         // width: 130,
           render: (h, params) => {
             return h("div", [
               h("Rate", {
