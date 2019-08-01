@@ -34,7 +34,7 @@ export default [{
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    redirect:'/bank/class',
+    redirect: '/bank/class',
     component: () => import('@/views/Bank/Bank.vue'),
     children: [{
       path: 'class',
@@ -48,7 +48,7 @@ export default [{
     }, {
       path: 'outclass',
       name: 'outclass',
-      redirect:'/bank/outclass/'+store.state.bank.bankList.outclass[0].aka,
+      redirect: '/bank/outclass/' + store.state.bank.bankList.outclass[0].aka,
       component: () => import('@/views/Bank/OutClass/OutClass.vue'),
       children: [{
         path: ':bankName',
@@ -58,14 +58,14 @@ export default [{
     }]
   },
   {
-    path:'/coding',
-    name:'coding',
-    redirect:'/error',
-    component:()=>import('@/views/Code/Code.vue'),
-    children:[{
+    path: '/coding',
+    name: 'coding',
+    redirect: '/error',
+    component: () => import('@/views/Code/Code.vue'),
+    children: [{
       path: 'class',
       name: 'codeclass',
-      redirect:'/error',
+      redirect: '/error',
       component: () => import('@/views/Code/Class/ClassCode.vue'),
       children: [{
         path: ':questionId',
@@ -75,7 +75,7 @@ export default [{
     }, {
       path: 'outclass',
       name: 'codeoutclass',
-      redirect:'/error',
+      redirect: '/error',
       component: () => import('@/views/Code/OutClass/OutClassCode.vue'),
       children: [{
         path: ':questionId',
@@ -85,18 +85,27 @@ export default [{
     }]
   },
   {
-    path:'/result',
-    name:'result',
+    path: '/result',
+    name: 'result',
     component: () => import('@/views/Result/Result.vue')
   },
   {
-    path:'/person',
-    name:'person',
-    component: () => import('@/views/Person/Person.vue')
+    path: '/person',
+    name: 'person',
+    component: () => import('@/views/Person/Person.vue'),
+    redirect: '/person/main',
+    children: [{
+      path: 'main',
+      name: 'main',
+     
+    }, {
+      path: 'star',
+      name: 'star',
+    }]
   },
   {
-    path:'/error',
-    name:'error',
+    path: '/error',
+    name: 'error',
     component: () => import('@/views/Error/Error.vue')
   }
 ]

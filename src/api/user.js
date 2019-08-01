@@ -134,3 +134,15 @@ export const getLeastFiveQuestion = () => {
     method:'post'
   })
 }
+
+export const changePlan = (number) => {
+  const data = paramsSerializer([{
+    name:'newnumber',
+    value:number
+  }])
+  return axios.request({
+    url:'/change_plan',
+    method:'post',
+    data
+  })
+}
