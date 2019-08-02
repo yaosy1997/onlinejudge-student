@@ -31,9 +31,11 @@ import {
     getQuestionProcess,
     getLeastFiveQuestion
 } from '@/api/user'
+import { setToken, getToken } from '@/lib/util'
 
 export default {
     state: {
+        token: getToken(),
         info: {},
         leftInfo:{},
         summrize:{},
@@ -46,6 +48,10 @@ export default {
     mutations: {
         setLogin(state) {
             state.isLogin = true
+        },
+        setToken (state, token) {
+            state.token = token
+            setToken(token)
         },
         setUserInfo(state, info) {
             state.info = info
@@ -88,6 +94,8 @@ export default {
                 login(username, password).then(res => {
                     if (res.data.code === "200") {
                         dispatch('handleAllInfo')
+                        const data = res.data.data
+                        commit('setToken', data.token)
                         resolve("success")
                     } else {
                         resolve(res.data.data)
@@ -102,6 +110,8 @@ export default {
                 logon(username, password, captcha).then(res => {
                     if (res.data.code === "200") {
                         dispatch('handleAllInfo')
+                        const data = res.data.data
+                        commit('setToken', data.token)
                         resolve("success")
                     } else {
                         resolve(res.data.data)
@@ -115,6 +125,7 @@ export default {
             return new Promise((resolve, reject) => {
                 logout().then(() => {
                         commit('reset')
+                        commit('setToken', '')
                         resolve("success")
                 }).catch(err => {
                     reject(err)

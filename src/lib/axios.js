@@ -65,6 +65,11 @@ class HttpRequest {
         const instance = axios.create()
         //每次传过去的sessionid不变
         axios.defaults.withCredentials = true
+        store.commit('setToken','123')
+        if(store.state.user.token){
+            console.log(store.state.user.token)
+            axios.defaults.headers.common['Authorization'] = '1232134'
+        }
         options = Object.assign(this.getInsideConfig(), options)
         this.interceptors(instance, options.url)
         return instance(options)
