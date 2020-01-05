@@ -16,17 +16,52 @@
  */
 
 <template>
-    <div class="layout">error</div>
+<div>
+    <div class="img index">
+        <!-- <div style="margin-top:10px;">
+            <img src="../images/404-back.png" width="125px" style="margin-right:50px;"/>
+            <img src="../images/404-f5.png" width="125px"/>
+        </div> -->
+    </div>
+    <div style="margin-top:10px;text-align:center;margin-bottom:80px;">
+            <router-link to="/"><img src="../../assets/404-back.png" width="125px" style="margin-right:50px;"/></router-link>
+            <img v-on:click="back" src="../../assets/404-f5.png" width="125px"/>
+    </div>
+</div>
 </template>
 
 <script>
-export default {
-    name:'error'
-}
+    export default {
+        name:'error',
+        data() {
+            return {
+            }
+        },
+        methods:{
+            back(){
+                this.$router.go(-1);//返回上一个页面
+        }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
-.layout{
-    padding-top: 5vw
+/* .index {
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    text-align: center;    
+} */
+
+.index{
+    width: 100%;
+    height: 795px;
+}
+
+.img{
+    background: url('../../assets/bj1-404.png') center center no-repeat;
+    background-size:cover;
 }
 </style>
