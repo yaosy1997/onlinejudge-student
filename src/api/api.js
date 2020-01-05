@@ -94,3 +94,10 @@ export const judgeCode = (code, lanauge, id, status) => {
     data
   })
 }
+
+export const getResult=()=>{
+  return axios.request({
+    url: '/result',
+    method: 'post',
+  })
+}

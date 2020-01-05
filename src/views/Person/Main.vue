@@ -103,7 +103,6 @@
 <script>
 import ScheduleBar from "@/components/Person/scheduleBar";
 import TimeLinePart from "@/components/Person/timeLinePart";
-import getLeastFiveQuestion from "@/api/user.js";
 
 export default {
   components: { TimeLinePart, ScheduleBar },

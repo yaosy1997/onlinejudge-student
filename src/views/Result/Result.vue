@@ -73,6 +73,8 @@
 
 <script>
 
+import {getResult} from '@/api/api.js'
+
     export default {
         name: 'result',
         data() {
@@ -113,8 +115,8 @@
         },
         created() {
             let _this = this;
-            this.$store.commit("setIndexTitle", "result");
-            this.ajax.post(_this.postIp + '/result').then(function (msg) {
+            // this.$store.commit("setIndexTitle", "result");
+            getResult().then(msg => {
                 _this.getQMessages(msg.data.data);
             })
         },
