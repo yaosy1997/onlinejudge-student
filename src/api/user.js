@@ -121,6 +121,20 @@ export const getSummrize = () => {
   })
 }
 
+export const getSummary = (kind) => {
+  const data = paramsSerializer([{
+    name: 'kind',
+    value: kind
+  }])
+  return axios.request({
+    url: '/summary',
+    method: 'post',
+    data
+  })
+}
+
+
+
 export const getQuestionProcess = () => {
   return axios.request({
     url:'/question_difficult_num',

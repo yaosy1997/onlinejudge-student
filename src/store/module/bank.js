@@ -21,8 +21,13 @@ export default {
         bankList:{
             class:[{name:"C语言程序设计",aka:"c"}],
             outclass:[{name:"基础练习",aka:"basic"},{name:"算法入门",aka:"middle"},{name:"算法提高",aka:"difficult"},{name:"算法挑战",aka:"charge"}]
+        },
+        currentOutClassType:'basic'
+    },
+    mutations: {
+        setOutClassType(state,type){
+            state.currentOutClassType=type
         }
     },
-    mutations: {},
     action: {}
 }

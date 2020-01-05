@@ -1,6 +1,6 @@
 import HttpRequest from '@/lib/axios'
-const baseUrl = '/cloudApi'
-const localUrl = '/api'
+import config from '@/config'
+const {baseUrl , localUrl} = config
 
 const axios = new HttpRequest(baseUrl)
 export default axios

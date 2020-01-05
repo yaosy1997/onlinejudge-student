@@ -62,6 +62,18 @@ export const initClassQuestion = (id) => {
   })
 }
 
+export const initOutClassQuestion = (id) => {
+  const data = paramsSerializer([{
+    name: 'id',
+    value: id
+  }])
+  return axios.request({
+    url: '/init_question',
+    method: 'post',
+    data
+  })
+}
+
 export const judgeCode = (code, lanauge, id, status) => {
   const data = paramsSerializer([{
     name: 'file',

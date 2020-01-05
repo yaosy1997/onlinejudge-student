@@ -50,7 +50,12 @@ export default {
   },
   watch: {
     '$route.query.page':function(){
-      this.page=this.$route.query.page.toString()
+      if(this.$route.query.page){
+        this.page=this.$route.query.page.toString()
+      }else{
+        this.page='1'
+      }
+      
     },
     "$route.params.bankName": function() {
       this.bankname = this.$route.params.bankName;

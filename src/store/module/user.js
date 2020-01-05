@@ -28,6 +28,7 @@ import {
     getPicture,
     getLeftInfo,
     getSummrize,
+    getSummary,
     getQuestionProcess,
     getLeastFiveQuestion
 } from '@/api/user'
@@ -39,6 +40,7 @@ export default {
         info: {},
         leftInfo:{},
         summrize:{},
+        summary:{},
         questionProcess:{},
         leastFiveQuestion:{},
         picture: '',
@@ -62,6 +64,9 @@ export default {
         },
         setSummrize(state,info){
             state.summrize=info
+        },
+        setSummary(state,info){
+            state.summary=info
         },
         setQuestionProcess(state,info){
             state.questionProcess=info
@@ -89,7 +94,7 @@ export default {
         }
     },
     actions: {
-        handleLogin({ dispatch }, { username, password }) {
+        handleLogin({ dispatch,commit }, { username, password }) {
             return new Promise((resolve, reject) => {
                 login(username, password).then(res => {
                     if (res.data.code === "200") {
@@ -105,7 +110,7 @@ export default {
                 })
             })
         },
-        handleLogon({ dispatch }, { username, password, captcha }) {
+        handleLogon({ dispatch,commit }, { username, password, captcha }) {
             return new Promise((resolve, reject) => {
                 logon(username, password, captcha).then(res => {
                     if (res.data.code === "200") {
@@ -153,6 +158,7 @@ export default {
                 dispatch('handlePicure')
                 dispatch('handleLeftInfo')
                 dispatch('handleSummrize')
+                dispatch('handleSummary')
                 //dispatch('handleQuestionProcess')
                 dispatch('handleLeastFiveQuestion')
                 resolve("success")
@@ -206,6 +212,20 @@ export default {
                 getSummrize().then(res=>{
                     if(res.data.code==='200'){
                         commit('setSummrize',res.data.data)
+                        resolve('success')
+                    }else{
+                        resolve(res)
+                    }
+                }).catch(err=>{
+                    reject(err)
+                })
+            })
+        },
+        handleSummary({commit}){
+            return new Promise((resolve,reject)=>{
+                getSummary('c').then(res=>{
+                    if(res.data.code==='200'){
+                        commit('setSummary',res.data.data)
                         resolve('success')
                     }else{
                         resolve(res)

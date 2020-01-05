@@ -19,7 +19,7 @@
   <div class="layout">
     <div class="hui_layout" style="margin: auto auto;">
       <Row>
-        <i-col span="8">
+        <i-col span="6">
           <div class="left-contect">
             <div class="left-message">
               <Row>
@@ -29,9 +29,7 @@
                       id="up"
                       :src="pic"
                       alt="修改头像"
-                      width="100px"
-                      height="100px"
-                      style="border-radius: 50%;margin-left: 20px;margin-top:20px;"
+                      style="width:5vw;height:5vw;border-radius: 50%;margin-top:20px;"
                     />
                   </div>
                 </i-col>
@@ -47,17 +45,17 @@
                     </router-link>
                     <h1
                       id="username"
-                      style="font-size: 23px;font-weight: 700;margin-left: 20px;margin-top: 10px;"
+                      style="font-size: 1.2vw;font-weight: 700;margin-left: 20px;margin-top: 10px;"
                     >
                       <router-link to="/person">{{nickname}}</router-link>
                     </h1>
                     <p
                       id="school"
-                      style="font-size: 14px;margin-top: 10px;margin-left: 20px;"
+                      style="font-size: 0.5vw;margin-top: 10px;margin-left: 20px;"
                     >{{school}}</p>
                     <p
                       id="major"
-                      style="font-size: 14px;margin-top: 6px;margin-left: 20px;"
+                      style="font-size: 0.5vw;margin-top: 6px;margin-left: 20px;"
                     >{{major}}</p>
                   </div>
                 </i-col>
@@ -178,7 +176,7 @@
             </div>
           </div>
         </i-col>
-        <i-col span="16">
+        <i-col span="18">
           <div class="right-contect">
             <div style="width: 90%;margin: auto;">
               <router-view />
@@ -270,12 +268,13 @@ export default {
 
 .hui_layout {
   background-color: rgba(174, 174, 174, 0);
-  width: 1100px;
+  width: 80vw;
+
 }
 
 .left-contect {
   width: 100%;
-  height: 600px;
+  height: 10vw;
 }
 
 .right-contect {
@@ -287,6 +286,7 @@ export default {
 .left-message {
   width: 100%;
   height: 190px;
+  padding: 0vw 0vw 0vw 2vw;
 }
 
 .border {

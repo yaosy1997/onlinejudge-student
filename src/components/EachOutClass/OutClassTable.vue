@@ -161,6 +161,11 @@ export default {
     },
     total() {
       return this.allData.length;
+    },
+    linkName(){
+      return this.$store.state.bank.bankList.outclass.find((arr)=>{
+        return arr.aka === this.$route.params.bankName
+      }).name
     }
   },
   watch: {
