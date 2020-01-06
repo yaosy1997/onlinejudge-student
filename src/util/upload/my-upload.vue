@@ -100,7 +100,7 @@
                         //         _this.$Message.error("上传失败");
                         //     }
                         // })
-                        this.$emit('finish');
+                        this.$emit('finish', formData);
 
                     })
                 } else {
