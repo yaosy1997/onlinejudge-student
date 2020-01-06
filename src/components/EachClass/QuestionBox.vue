@@ -1,6 +1,6 @@
 <template>
-  <div class="border">
-    <div style="width: 100%;height: auto ">
+  <div class="border" >
+    <div style="width: 100%;height: auto " v-on:click="show = !show">
       <div style="border-bottom:#707070 1px solid;width: 500px;padding-bottom: 10px ">
         <span
           style="width: 500px;height: 19px;font-size: 14px;color:#444444; display:inline-block; "
@@ -20,9 +20,13 @@
         <div v-else />
       </div>
     </div>
-    <div class="questionBox" style="width: 100%" >
+
+<transition name="fade">
+    <div class="questionBox" style="width: 100%" v-if="show">
       <Qline :question="ques" v-for="ques in question" :key="ques.id" />
     </div>
+</transition>
+
   </div>
 </template>
 
@@ -81,7 +85,8 @@ export default {
       goal: "",
       endDate: "",
       state: "",
-      success: successPic
+      success: successPic,
+      show: false
     };
   },
   created() {
@@ -113,11 +118,18 @@ export default {
   height: 80px;
 }
 
-.questionBox {
+/* .questionBox {
   display: none;
-}
+} */
 
-.border:hover .questionBox{
+/* .border:hover .questionBox{
   display: inline;
+} */
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
