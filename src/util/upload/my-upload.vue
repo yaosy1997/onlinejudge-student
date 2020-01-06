@@ -44,7 +44,6 @@
 
 <script>
     import {VueCropper} from 'vue-cropper'
-    import GetUserInfo from '../../js/GetUserInfo'
 
     export default {
         name:'my-upload',
@@ -67,7 +66,7 @@
                     autoCropHeight: 200,
                     fixedBox: true
                 },
-                downImg: '#'
+                downImg: '#',
             }
         },
         components: {VueCropper},
@@ -83,7 +82,7 @@
                 this.$refs.cropper.rotateRight()
             },
             finish(type) {
-                console.log('finish');
+                // console.log('finish');
                 let _this = this;
                 let formData = new FormData();
                 // 输出
@@ -91,15 +90,17 @@
                     this.$refs.cropper.getCropBlob((data) => {
                         let img = window.URL.createObjectURL(data);
                         formData.append("file", data,'file');
-                        this.http.post(this,"/ChangeImg", formData).then(function (msg) {
-                            if(msg.data.code==='200') {
-                                _this.$Message.success("上传成功");
-                                _this.modal6=false;
-                                setTimeout(()=>{GetUserInfo.getUserInfo(_this)},1000);
-                            }else {
-                                _this.$Message.error("上传失败");
-                            }
-                        })
+                        // this.http.post(this,"/ChangeImg", formData).then(function (msg) {
+                        //     if(msg.data.code==='200') {
+                        //         _this.$Message.success("上传成功");
+                        //         _this.modal6=false;
+                        //         // setTimeout(()=>{GetUserInfo.getUserInfo(_this)},1000);
+                                
+                        //     }else {
+                        //         _this.$Message.error("上传失败");
+                        //     }
+                        // })
+                        this.$emit('finish');
 
                     })
                 } else {
