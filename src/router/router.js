@@ -97,8 +97,11 @@ export default [{
     children: [{
       path: 'main',
       name: 'main',
-      component: () => import('@/views/Person/Main.vue')
-     
+      component: () => import('@/views/Person/Main.vue'),
+    },{
+      path: 'change',
+      name: 'change',
+      component: () => import('@/views/Person/Change.vue')
     }, {
       path: 'star',
       name: 'star',
