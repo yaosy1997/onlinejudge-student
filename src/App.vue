@@ -38,7 +38,7 @@
           </router-link>
           <DropdownMenu slot="list">
             <DropdownItem name='person'>个人中心</DropdownItem>
-            <DropdownItem namw='star'>收藏夹</DropdownItem>
+            <DropdownItem name='collect'>收藏夹</DropdownItem>
             <DropdownItem divided name='logout'>退出登录</DropdownItem>
           </DropdownMenu>
         </Dropdown>

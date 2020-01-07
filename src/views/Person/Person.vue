@@ -179,9 +179,17 @@
                             </div>
                         </div>
 
+                        <router-link to="collect">
                         <div style="float:right;color:rgba(112, 112, 112, 1)">
-                            <div class="border" style="margin-top:2vw">收藏夹</div>
+                            <div class="border_collect" style="margin-top:2vw;">
+                                 <div style="margin-top:12px">
+                                 <span style="font-size:16px;font-weight:600"><img src="@/assets/collect.png" style="display:inline-block;vertical-align:middle;margin-right:8px;width:23px;"/>
+                                 收 藏 夹</span>
+                                 </div>
+                            </div>
                         </div>
+                        </router-link>
+
                     </div>
                 </i-col>
                 <i-col span="18">
@@ -301,6 +309,16 @@ export default {
   border: 1px solid rgba(192, 192, 192, 0.2);
   width: 274px;
   min-height: 100px;
+  margin-right: 68px;
+  box-shadow: 4px 5px 7px rgba(121, 121, 121, 0.2);
+  border-radius: 5px;
+  font-family: "Hiragino Sans GB";
+}
+
+.border_collect {
+  border: 1px solid rgba(192, 192, 192, 0.2);
+  width: 274px;
+  min-height: 50px;
   margin-right: 68px;
   box-shadow: 4px 5px 7px rgba(121, 121, 121, 0.2);
   border-radius: 5px;

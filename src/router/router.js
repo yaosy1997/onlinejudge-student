@@ -103,8 +103,9 @@ export default [{
       name: 'change',
       component: () => import('@/views/Person/Change.vue')
     }, {
-      path: 'star',
-      name: 'star',
+      path: 'collect',
+      name: 'collect',
+      component: () => import('@/views/Person/Collect.vue')
     }]
   },
   {
