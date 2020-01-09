@@ -160,3 +160,11 @@ export const changePlan = (number) => {
     data
   })
 }
+
+export const uploadImage = (image) =>{
+  return axios.request({
+    url:'/set_picture',
+    method:'post',
+    data:image
+  })
+}

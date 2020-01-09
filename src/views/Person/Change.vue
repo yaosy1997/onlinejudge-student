@@ -10,10 +10,7 @@
                 <div
                         class="row"
                         style="width: 80%">
-                    <div v-if="close" class="col-md-7" style="margin-bottom:24px;"><label>姓名：</label>
-                        <Input v-model="info.student_name" disabled style="width: 300px"/>
-                    </div>
-                    <div v-else class="col-md-7" style="margin-bottom:24px;"><label>姓名：</label>
+                    <div class="col-md-7" style="margin-bottom:24px;"><label>姓名：</label>
                         <Input v-model="info.student_name"  style="width: 300px"/>
                     </div>
                     <div class="col-md-7" style="margin-bottom:24px;"><label>昵称：</label>
@@ -61,7 +58,7 @@
             <div style="margin-top: 10px">
                 <divider orientation="left">修改头像</divider>
                 <img :src="picture" style="margin-bottom: 10px"/>
-                <my-upload></my-upload>
+                <my-upload @finish='finish'></my-upload>
             </div>
 
         </tab-pane>
@@ -142,14 +139,12 @@
 </template>
 
 <script>
-    //import myUpload from './parts/myUpload'
-    // import cover from "../../js/cover";
+
+import {uploadImage} from '@/api/user.js'
+import { mapActions } from "vuex";
 
     export default {
         name: 'Change',
-        components:{
-            
-        },
         data() {
             const validateoldPass = (rule, value, callback) => {
                 if (value === '') {
@@ -209,14 +204,10 @@
             };
         },
         created() {
-            setTimeout(()=>{
-            if (this.$store.state.user.info.student_name == 'unknow') {
-                this.close=false;
-            }},1000);
-        },
-        mounted(){
-            this.$store.commit('setSTitle', 'change');
-
+            // setTimeout(()=>{
+            // if (this.$store.state.user.info.student_name == 'unknow') {
+            //     this.close=false;
+            // }},1000);
         },
         methods: {
             handleSubmit(name) {
@@ -272,6 +263,17 @@
                     title: 'Exceeding file size limit',
                     desc: 'File  ' + file.name + ' is too large, no more than 2M.'
                 });
+            },
+            ...mapActions(["handlePicure"]),
+            finish(image){
+                uploadImage(image).then(res=>{
+                    if (res.data.code === "200") {
+                        this.$Message.success("修改成功");
+                        this.handlePicure()
+                    }else{
+                        this.$Message.error("修改失败");
+                    }
+                })
             }
         },
         computed: {
