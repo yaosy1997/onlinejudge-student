@@ -49,17 +49,21 @@
       </div>
     </div>
     <sign></sign>
+    <Drawer title="题目答案" :closable="false" v-model="$store.state.bank.Answer.isOpen" :scrollable="true" width="1000" placement="left">
+      <questionAnswer></questionAnswer>
+    </Drawer>
     <router-view />
   </div>
 </template>
 
 <script>
 import sign from "./views/Sign/Sign";
+import questionAnswer from '@/components/questionAnswer'
 import { mapActions } from "vuex";
 export default {
   name: "App",
   components: {
-    sign
+    sign,questionAnswer
   },
   methods:{
     ...mapActions(["handleLogout"]),

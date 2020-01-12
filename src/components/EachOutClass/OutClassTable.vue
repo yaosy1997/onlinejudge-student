@@ -16,20 +16,24 @@
  */
 
 <template>
-  <div>
-    <Table :loading="loading" :columns="columns" :data="data" border />
-    <Page
-      style="float:left;margin-top:1vw"
-      :total="total"
-      :current="pageNum"
-      :page-size="pageSize"
-      show-elevator
-      @on-change="handlePage"
-    />
-  </div>
+    <div>
+        <Table :loading="loading" :columns="columns" :data="data" border />
+        <Page
+            style="float:left;margin-top:1vw"
+            :total="total"
+            :current="pageNum"
+            :page-size="pageSize"
+            show-elevator
+            @on-change="handlePage"
+        />
+    </div>
 </template>
 
 <script>
+
+import {setFavorite} from '@/api/user.js'
+import { mapActions } from "vuex";
+
 export default {
   name: "outClassTable",
   data() {
@@ -37,8 +41,8 @@ export default {
       columns: [
         {
           title: "题号",
-          key: "question_number",
-         // width: 100
+          key: "question_number"
+          // width: 100
         },
         {
           title: "题目",
@@ -48,7 +52,7 @@ export default {
         {
           title: "ac率",
           key: "ac",
-         // width: 100,
+          // width: 100,
           render: (h, params) => {
             return h("div", parseInt(params.row.ac * 100) + "%");
           }
@@ -56,7 +60,7 @@ export default {
         {
           title: "难度",
           key: "difficulty",
-         // width: 130,
+          // width: 130,
           render: (h, params) => {
             return h("div", [
               h("Rate", {
@@ -109,7 +113,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.star(params.index);
+                      this.star(params.row.question_number);
                     }
                   }
                 },
@@ -124,7 +128,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.check(params.index);
+                      this.check(params.row.question_number);
                     }
                   }
                 },
@@ -149,7 +153,7 @@ export default {
     },
     setPage: {
       type: String,
-      default:'1'
+      default: "1"
     }
   },
   created() {
@@ -162,15 +166,15 @@ export default {
     total() {
       return this.allData.length;
     },
-    linkName(){
-      return this.$store.state.bank.bankList.outclass.find((arr)=>{
-        return arr.aka === this.$route.params.bankName
-      }).name
+    linkName() {
+      return this.$store.state.bank.bankList.outclass.find(arr => {
+        return arr.aka === this.$route.params.bankName;
+      }).name;
     }
   },
   watch: {
     setPage(val) {
-        this.handlePage(parseInt(val));
+      this.handlePage(parseInt(val));
     },
     QuestionData(val) {
       this.allData = val;
@@ -179,10 +183,11 @@ export default {
     }
   },
   methods: {
+
     handlePage(value) {
-      let totalPage=Math.ceil(this.total/this.pageSize)
-      if(totalPage<value){
-        this.$router.push({name:'error'})
+      let totalPage = Math.ceil(this.total / this.pageSize);
+      if (totalPage < value) {
+        this.$router.push({ name: "error" });
       }
       let _start = (value - 1) * this.pageSize;
       let _end = value * this.pageSize;
@@ -203,8 +208,27 @@ export default {
         this.data = pagedata.slice(0, this.pageSize);
       }
     },
-    test(index){
-      this.$router.push({name:'eachOutClassCode',params:{questionId:index}})
+    test(index) {
+      this.$router.push({
+        name: "eachOutClassCode",
+        params: { questionId: index }
+      });
+    },
+    ...mapActions(["handleAnswer"]),
+    check(index) {
+        // this.answer.questionId = this.data6[index].question_number;
+        // this.answer.questiontype = this.Qtype;
+        this.handleAnswer({questionId:index,type:'question'})
+    },
+    star(index) {
+        setFavorite(index).then(res=>{
+          if (res.data.code === "200") {
+            this.$Message.success("收藏成功");
+          } else {
+            this.$Message.error("收藏失败");
+          }
+        });
+
     }
   }
 };

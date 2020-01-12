@@ -140,7 +140,7 @@
 
 <script>
 
-import {uploadImage} from '@/api/user.js'
+import {uploadImage,changeStudentInformation,changePassword} from '@/api/user.js'
 import { mapActions } from "vuex";
 
     export default {
@@ -213,12 +213,9 @@ import { mapActions } from "vuex";
             handleSubmit(name) {
                 if (name.passwd !== '') {
                     if (name.passwd === name.passwdCheck) {
-                        let _this = this;
-                        let Param = new URLSearchParams();
-                        Param.append("password", cover.Encrypt(name.passwd));
-                        this.ajax.post(this.postIp + '/change_password', Param).then(function (response) {
-                            if (response.data.message === '成功') {
-                                _this.$Message.success("修改成功");
+                        changePassword(name.passwd).then(res =>{
+                            if (res.data.code === '200') {
+                                this.$Message.success("修改成功");
                             }
                         }).catch(function (response) {
                             console.log(response);
@@ -236,22 +233,12 @@ import { mapActions } from "vuex";
                 this.$refs[name].resetFields();
             },
             change() {
-                let _this = this;
-                let Param = new URLSearchParams();
-                Param.append("realname", this.info.student_name);
-                Param.append("nickname", this.info.nickname);
-                Param.append("sex", this.info.sex);
-                Param.append("school", this.info.school);
-                Param.append("grade", this.info.grade);
-                Param.append("major", this.info.major);
-                Param.append("schoolid", this.info.schoolid);
-                this.ajax.post(_this.postIp+'/change_student_Information', Param).then(function (msg) {
-                    if ("成功" === msg.data.message) {
-                        _this.close =true;
-                        _this.$store.commit('setuserinfo', _this.info);
-                        _this.$Message.success("修改成功");
+                changeStudentInformation(this.info).then(res => {
+                    if (res.data.code === "200") {
+                        this.$store.commit('setUserInfo', this.info);
+                        this.$Message.success("修改成功");
                     } else {
-                        _this.$Message.error("修改失败");
+                        this.$Message.error("修改失败");
                     }
                 })
             },

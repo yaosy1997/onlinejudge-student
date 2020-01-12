@@ -137,34 +137,108 @@ export const getSummary = (kind) => {
 
 export const getQuestionProcess = () => {
   return axios.request({
-    url:'/question_difficult_num',
-    method:'post'
+    url: '/question_difficult_num',
+    method: 'post'
   })
 }
 
 export const getLeastFiveQuestion = () => {
   return axios.request({
-    url:'/five_student',
-    method:'post'
+    url: '/five_student',
+    method: 'post'
   })
 }
 
 export const changePlan = (number) => {
   const data = paramsSerializer([{
-    name:'newnumber',
-    value:number
+    name: 'newnumber',
+    value: number
   }])
   return axios.request({
-    url:'/change_plan',
-    method:'post',
+    url: '/change_plan',
+    method: 'post',
     data
   })
 }
 
-export const uploadImage = (image) =>{
+export const uploadImage = (image) => {
   return axios.request({
-    url:'/set_picture',
-    method:'post',
-    data:image
+    url: '/set_picture',
+    method: 'post',
+    data: image
+  })
+}
+
+export const changeStudentInformation = (info) => {
+  const data = paramsSerializer([{
+    name: 'realname',
+    value: info.student_name
+  }, {
+    name: 'nickname',
+    value: info.nickname
+  }, {
+    name: 'sex',
+    value: info.sex
+  }, {
+    name: 'school',
+    value: info.school
+  }, {
+    name: 'grade',
+    value: info.grade
+  }, {
+    name: 'major',
+    value: info.major
+  }, {
+    name: 'schoolid',
+    value: info.schoolid
+  }])
+  return axios.request({
+    url: '/change_student_Information',
+    method: 'post',
+    data
+  })
+}
+
+export const changePassword = (password) => {
+
+  const data = paramsSerializer([{
+    name: 'password',
+    value: crypto.Encrypt(password)
+  }])
+  return axios.request({
+    url: '/change_password',
+    method: 'post',
+    data
+  })
+}
+
+export const setFavorite = (questionId) => {
+  const data = paramsSerializer([{
+    name: 'question_id',
+    value: questionId
+  }])
+  return axios.request({
+    url: '/favorite',
+    method: 'post',
+    data
+  })
+}
+
+export const getFavorite = () => {
+  return axios.request({
+    url: '/get_favorites',
+    method: 'post'
+  })
+}
+
+export const deleteFavorite = (questionId) => {
+  const data = paramsSerializer([{
+    name: 'question_id',
+    value: questionId
+  }])
+  return axios.request({
+    url: '/delete_question',
+    method: 'post',
+    data
   })
 }

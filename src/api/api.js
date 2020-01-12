@@ -101,3 +101,21 @@ export const getResult=()=>{
     method: 'post',
   })
 }
+
+export const getAnswer=(questionId,type)=>{
+  let url
+  if (type==='course') {
+    url='/courseanswer'
+  }else{
+    url='/questionanswer'
+  }
+  const data=paramsSerializer([{
+    name:'question_id',
+    value:questionId
+  }])
+  return axios.request({
+    url,
+    method:'post',
+    data
+  })
+}

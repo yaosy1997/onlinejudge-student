@@ -31,9 +31,6 @@ export default [{
   {
     path: '/bank',
     name: 'bank',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     redirect: '/bank/class',
     component: () => import('@/views/Bank/Bank.vue'),
     children: [{
@@ -112,5 +109,8 @@ export default [{
     path: '/error',
     name: 'error',
     component: () => import('@/views/Error/Error.vue')
-  }
+  },{
+    path: "*",
+    redirect:'/error',
+}
 ]

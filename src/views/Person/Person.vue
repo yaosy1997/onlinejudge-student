@@ -103,7 +103,7 @@
 
                         <!--导航栏-->
 
-                        <div style="float:right;color:rgba(112, 112, 112, 1)">
+                        <div style="color:rgba(112, 112, 112, 1)">
                             <div
                                 class="border"
                                 style="width: 274px ;height: 316px ; margin-right: 68px;margin-top:10px;"
@@ -152,15 +152,15 @@
                                 </div>
                                 <div class="plan-text" style="margin-top: 30px">
                                     <div v-if="changePlaneNumber===false">
-                                        <Button
+                                        <!-- <Button
                                             type="default"
                                             style="width: 102px;height: 35px; font-size: 15px;"
                                             v-on:click="continueWork"
-                                        >继续做题</Button>
+                                        >继续做题</Button> -->
                                         <Button
                                             v-on:click="changePlane"
                                             type="primary"
-                                            style="margin-left: 19px; width: 102px;height: 35px; font-size: 15px;"
+                                            style="margin-right: 5px; width: 102px;height: 35px; font-size: 15px;float:right"
                                         >编辑计划</Button>
                                     </div>
                                     <div v-else>
@@ -180,7 +180,7 @@
                         </div>
 
                         <router-link to="collect">
-                        <div style="float:right;color:rgba(112, 112, 112, 1)">
+                        <div style="color:rgba(112, 112, 112, 1)">
                             <div class="border_collect" style="margin-top:2vw;">
                                  <div style="margin-top:12px">
                                  <span style="font-size:16px;font-weight:600"><img src="@/assets/collect.png" style="display:inline-block;vertical-align:middle;margin-right:8px;width:23px;"/>
@@ -284,7 +284,7 @@ export default {
 
 .hui_layout {
   background-color: rgba(174, 174, 174, 0);
-  width: 80vw;
+  width: 60vw;
 }
 
 .left-contect {

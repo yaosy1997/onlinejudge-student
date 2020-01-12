@@ -20,6 +20,7 @@
 
 <script>
 
+import {getFavorite,deleteFavorite} from '@/api/user.js'
 
     export default {
         props: {
@@ -93,11 +94,9 @@
 
         },
         created() {
-            this.$store.commit('setSTitle', 'star');
-            let _this = this;
-            this.ajax.post(_this.postIp + '/get_favorites').then(function (msg) {
-                _this.getQMessages(msg.data.data);
-                _this.total = msg.data.data.length;
+            getFavorite().then(res=> {
+                this.getQMessages(res.data.data);
+                this.total = res.data.data.length;
             });
 
 
@@ -105,26 +104,18 @@
 
         methods: {
             test(index) {
-                this.$router.push({
-                    name: 'test',
-                    params: {
-                        questionNumber: this.data6[index].question_id
-                    }
-                })
+                let question=this.data6[index].question_id
+                this.$router.push({name:'eachOutClassCode',params:{questionId:question}})
             },
 
 
             unstar(index) {
-
-                let _this = this;
-                let Param = new URLSearchParams;
-                Param.append('question_id', this.data6[index].question_id);
-                this.ajax.post(_this.postIp + '/delete_question', Param).then(function (msg) {
-                    if (msg.data.message === "成功") {
-                        _this.$Message.success("删除成功");
-                        _this.data6.splice(index, 1);
+               deleteFavorite(this.data6[index].question_id).then(res => {
+                    if (res.data.code === "200") {
+                        this.$Message.success("删除成功");
+                        this.data6.splice(index, 1);
                     } else {
-                        _this.$Message.error("删除失败");
+                        this.$Message.error("删除失败");
                     }
                 })
 
