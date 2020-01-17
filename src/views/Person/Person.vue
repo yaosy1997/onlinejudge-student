@@ -119,7 +119,7 @@
                         <div style="color:rgba(112, 112, 112, 1);margin-top:1.5vw;">
                             <div
                                 class="border"
-                                style="width: 274px ;height: 316px ; margin-right: 68px;margin-top:10px;"
+                                style="height: 316px ; margin-right: 68px;margin-top:10px;"
                             >
                                 <p class="today-title">
                                     <img
@@ -290,7 +290,7 @@ export default {
 }
 
 .left-contect {
-  width: 100%;
+  width: 90%;
   height: 10vw;
 }
 
@@ -302,13 +302,12 @@ export default {
 }
 
 .left-message {
-  width: 300px;
   height: 180px;
 }
 
 .border {
   border: 1px solid rgba(192, 192, 192, 0.2);
-  width: 274px;
+  width: 100%;
   min-height: 100px;
   margin-right: 68px;
   box-shadow: 4px 5px 7px rgba(121, 121, 121, 0.2);
@@ -318,7 +317,7 @@ export default {
 
 .border_collect {
   border: 1px solid rgba(192, 192, 192, 0.2);
-  width: 274px;
+  width: 100%;
   min-height: 50px;
   margin-right: 68px;
   box-shadow: 4px 5px 7px rgba(121, 121, 121, 0.2);
@@ -330,7 +329,7 @@ export default {
   font-size: 18px;
   float: left;
   text-align: left;
-  width: 230px;
+  width: 86%;
   height: 24px;
   margin: 16px 18px auto;
 }
