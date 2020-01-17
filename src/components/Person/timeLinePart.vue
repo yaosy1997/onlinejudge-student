@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 600px;">
+    <div style="width: 100%;">
         <p class="time">{{ date }}</p>
         <Drawer
             :closable="false"
@@ -17,7 +17,7 @@
         </Drawer>
         <div v-for="state in states">
             <div class="content">
-                <div style="font-size: 13px;width: 550px">
+                <div style="font-size: 13px;width: 91%">
                     <span>{{ state.time }}</span>
                     <span style="margin-left: 10px">{{ state.name }}</span>
                     <Button
@@ -26,7 +26,7 @@
                         v-on:click="test(state.id)"
                     >重做本题</Button>
                 </div>
-                <div style="font-size: 13px;width: 550px">
+                <div style="font-size: 13px;width: 91%">
                     <div style="margin-left: 40px;margin-top: 8px">
                         <span v-if="state.result==='AC_RIGHT'" style="color: #52c41a">运行通过</span>
                         <span v-else-if="state.result==='AC_WRONG'" style="color: #fa201a">结果错误</span>
@@ -109,6 +109,6 @@ export default {
   margin-top: 8px;
   margin-bottom: 9px;
   margin-left: 20px;
-  width: 550px;
+  width: 100%;
 }
 </style>

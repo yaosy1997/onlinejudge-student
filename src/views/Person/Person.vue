@@ -21,7 +21,7 @@
     <div class="layout">
         <div class="hui_layout" style="margin: auto auto;">
             <Row>
-                <i-col span="6">
+                <i-col span="8">
                     <div class="left-contect">
                         <div class="left-message">
                             <Row>
@@ -69,7 +69,7 @@
                                 </i-col>
                             </Row>
 
-                            <div style="margin-left: 30px;width: 73%;margin-top: 15px;">
+                            <div style="margin-left: 30px;margin-top: 15px;">
                                 <i-col span="12">
                                     <div>
                                         <i-col span="12" style="text-align:right;">
@@ -101,9 +101,22 @@
                             </div>
                         </div>
 
-                        <!--导航栏-->
+                        <!--收藏夹-->
 
-                        <div style="color:rgba(112, 112, 112, 1)">
+                        <router-link to="collect">
+                        <div style="color:rgba(112, 112, 112, 1);margin-top:1vw;">
+                            <div class="border_collect">
+                                 <div style="margin-top:12px">
+                                 <span style="font-size:16px;font-weight:600"><img src="@/assets/collect.png" style="display:inline-block;vertical-align:middle;margin-right:8px;width:23px;"/>
+                                 收 藏 夹</span>
+                                 </div>
+                            </div>
+                        </div>
+                        </router-link>
+
+                        <!--今日计划-->
+
+                        <div style="color:rgba(112, 112, 112, 1);margin-top:1.5vw;">
                             <div
                                 class="border"
                                 style="width: 274px ;height: 316px ; margin-right: 68px;margin-top:10px;"
@@ -179,20 +192,9 @@
                             </div>
                         </div>
 
-                        <router-link to="collect">
-                        <div style="color:rgba(112, 112, 112, 1)">
-                            <div class="border_collect" style="margin-top:2vw;">
-                                 <div style="margin-top:12px">
-                                 <span style="font-size:16px;font-weight:600"><img src="@/assets/collect.png" style="display:inline-block;vertical-align:middle;margin-right:8px;width:23px;"/>
-                                 收 藏 夹</span>
-                                 </div>
-                            </div>
-                        </div>
-                        </router-link>
-
                     </div>
                 </i-col>
-                <i-col span="18">
+                <i-col span="16">
                     <div class="right-contect">
                         <div style="width: 90%;margin: auto;">
                             <router-view />
@@ -300,9 +302,8 @@ export default {
 }
 
 .left-message {
-  width: 100%;
-  height: 190px;
-  padding: 0vw 0vw 0vw 2vw;
+  width: 300px;
+  height: 180px;
 }
 
 .border {
