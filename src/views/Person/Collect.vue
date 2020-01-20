@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 635px">
+    <div style="width: 100%">
         <div>
             <Table
                     :loading="loading"

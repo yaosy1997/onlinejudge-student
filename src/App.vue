@@ -65,6 +65,12 @@ export default {
   components: {
     sign,questionAnswer
   },
+  created(){
+    console.log("<---------------------------------------------------------------\n" +
+                    "如发现bug请发送邮件（含截图）至 %cyao__sy@163.com\n" +
+                    "%c或提交issue至 https://gitee.com/LeGuanDeYaoSiYuan/onlinejudge-student/issues \n"+
+                    "---------------------------------------------------------------->","color:red","color:black");
+  },
   methods:{
     ...mapActions(["handleLogout"]),
     handleDownClick(name){

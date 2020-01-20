@@ -18,105 +18,106 @@
  */
 
 <template>
-  <div>
-    <Card>
-      <div style="min-height: 200px; text-align:left">
-        <div style="margin-left:20px;margin-right:30px;margin-bottom:15px;">
-          <Row>
-            <i-col span="16">
-              <Breadcrumb>
-                <BreadcrumbItem to="/bank/outclass">
-                  <Icon type="ios-navigate" /> 算法测试
-                </BreadcrumbItem>
-                <BreadcrumbItem to="">
-                  <Icon type="logo-buffer"></Icon>{{ctype}}
-                </BreadcrumbItem>
-                <!-- <BreadcrumbItem>
+    <div>
+        <Card>
+            <div style="min-height: 200px; text-align:left">
+                <div style="margin-left:20px;margin-right:30px;margin-bottom:15px;">
+                    <Row>
+                        <i-col span="16">
+                            <Breadcrumb>
+                                <BreadcrumbItem to="/bank/outclass">
+                                    <Icon type="ios-navigate" />算法测试
+                                </BreadcrumbItem>
+                                <BreadcrumbItem to>
+                                    <Icon type="logo-buffer"></Icon>
+                                    {{ctype}}
+                                </BreadcrumbItem>
+                                <!-- <BreadcrumbItem>
                   <Icon type="ios-cafe"></Icon> Breadcrumb
-                </BreadcrumbItem>-->
-              </Breadcrumb>
-            </i-col>
-            <i-col span="8">
-              <div style="width:120px;float:right">
-                <Icon type="ios-arrow-back" color="#0066FF" />
-                <a style="font-size:12px;" v-on:click="Last">上一题</a>
-                <a style="font-size:12px;margin-left:1vw;" v-on:click="Next">下一题</a>
-                <Icon type="ios-arrow-forward" color="#0066FF" />
-              </div>
-            </i-col>
-          </Row>
-        </div>
+                                </BreadcrumbItem>-->
+                            </Breadcrumb>
+                        </i-col>
+                        <i-col span="8">
+                            <div style="width:120px;float:right">
+                                <Icon type="ios-arrow-back" color="#0066FF" />
+                                <a style="font-size:12px;" v-on:click="Last">上一题</a>
+                                <a style="font-size:12px;margin-left:1vw;" v-on:click="Next">下一题</a>
+                                <Icon type="ios-arrow-forward" color="#0066FF" />
+                            </div>
+                        </i-col>
+                    </Row>
+                </div>
 
-        <router-view />
+                <router-view />
 
-        <Steps
-          :current="step.current"
-          :status="step.status"
-          direction="vertical"
-          style="margin-top: 10px"
-        >
-          <Step title="开始答题" content="正在将代码上传至判题系统">
-            <Tabs
-              :value="language"
-              style="width: 230px;margin-left: 0px"
-              @on-click="changeLanguage"
-            >
-              <TabPane label="C" name="c" />
-              <TabPane label="C++" name="c++" />
-              <TabPane label="JAVA" name="java" disabled />
-            </Tabs>
-            <div style="width:70vw; height:605px;">
-              <codemirror
-                :options="cmOptions"
-                v-model="answer"
-                class="codetext"
-                style="font-size:15px;width:65vw; height:580px; float: left; margin-top:10px;margin-left:0px; border: #C2C2C2 solid 1px; border-radius: 1px;"
-              />
+                <Steps
+                    :current="step.current"
+                    :status="step.status"
+                    direction="vertical"
+                    style="margin-top: 10px"
+                >
+                    <Step title="开始答题" content="正在将代码上传至判题系统">
+                        <Tabs
+                            :value="language"
+                            style="width: 230px;margin-left: 0px"
+                            @on-click="changeLanguage"
+                        >
+                            <TabPane label="C" name="c" />
+                            <TabPane label="C++" name="c++" />
+                            <TabPane label="JAVA" name="java" disabled />
+                        </Tabs>
+                        <div style="width:70vw; height:605px;">
+                            <codemirror
+                                :options="cmOptions"
+                                v-model="answer"
+                                class="codetext"
+                                style="font-size:15px;width:65vw; height:580px; float: left; margin-top:10px;margin-left:0px; border: #C2C2C2 solid 1px; border-radius: 1px;"
+                            />
+                        </div>
+                        <div style="width:65vw; height:40px;display:inline-flex">
+                            <p style="width:55vw; height:34px; font-size: 13px;color: #ff0009">
+                                Tips: 答案最后不要输出回车;
+                                使用math库的同时要添加stdlib.h; 所有的输入必须在输出之前;
+                            </p>
+                            <Button
+                                style="width:10vw;height:34px;"
+                                icon="ios-cloud-upload-outline"
+                                type="primary"
+                                v-on:click="post"
+                            >
+                                提
+                                交
+                            </Button>
+                        </div>
+                    </Step>
+
+                    <Step title="代码测试" :content="isPost"></Step>
+
+                    <Step title="结果输出" content>
+                        <Table
+                            border
+                            :columns="columns1"
+                            :data="data1"
+                            class="my-table"
+                            style="margin-top:10px;margin-bottom: 20px;width:65vw;"
+                        ></Table>
+                        <Card v-if="error.statue" style="width:65vw;margin-bottom: 30px;">
+                            <p slot="title">
+                                <Icon type="md-warning" color="#ff1517" size="22"></Icon>
+                                <span style="color:#ff1517">&nbsp;&nbsp;Error Message</span>
+                            </p>
+                            <p
+                                v-for="message in error.message"
+                                :key="message.id"
+                                style="white-space: pre;font-size: 12px;font-family: Consolas"
+                            >{{message}}</p>
+                        </Card>
+                    </Step>
+                </Steps>
             </div>
-            <div style="width:65vw; height:40px;display:inline-flex">
-              <p style="width:55vw; height:34px; font-size: 13px;color: #ff0009">
-                Tips: 答案最后不要输出回车;
-                使用math库的同时要添加stdlib.h; 所有的输入必须在输出之前;
-              </p>
-              <Button
-                style="width:10vw;height:34px;"
-                icon="ios-cloud-upload-outline"
-                type="primary"
-                v-on:click="post"
-              >
-                提
-                交
-              </Button>
-            </div>
-          </Step>
-
-          <Step title="代码测试" :content="isPost"></Step>
-
-          <Step title="结果输出" content>
-            <Table
-              border
-              :columns="columns1"
-              :data="data1"
-              class="my-table"
-              style="margin-top:10px;margin-bottom: 20px;width:65vw;"
-            ></Table>
-            <Card v-if="error.statue" style="width:65vw;margin-bottom: 30px;">
-              <p slot="title">
-                <Icon type="md-warning" color="#ff1517" size="22"></Icon>
-                <span style="color:#ff1517">&nbsp;&nbsp;Error Message</span>
-              </p>
-              <p
-                v-for="message in error.message"
-                :key="message.id"
-                style="white-space: pre;font-size: 12px;font-family: Consolas"
-              >{{message}}</p>
-            </Card>
-          </Step>
-        </Steps>
-      </div>
-    </Card>
-    <div id="abc" style="width:10px;height:80px;"></div>
-  </div>
+        </Card>
+        <div id="abc" style="width:10px;height:80px;"></div>
+    </div>
 </template>
 
 <script>
@@ -194,7 +195,7 @@ export default {
   },
   data() {
     return {
-      ctype:'基础练习',
+      ctype: "基础练习",
       question_number: 1,
       cmOptions: options,
       model3: "Java",
@@ -217,25 +218,47 @@ export default {
         message: []
       },
       isPost: "正在进行判题",
-      timeoutId:null,
+      timeoutId: null
     };
   },
   created() {
     this.answer = this.$route.query.code;
+    setTimeout(() => {
+      document.documentElement.scrollTop = this.$route.query.site;
+    }, 500);
+  },
+  updated: function() {
+    this.$nextTick(function() {
+      document.documentElement.scrollTop = this.$route.query.site;
+    });
   },
   watch: {
     answer() {
+      if (this.$route.query.isposted == true) {
+        this.$router.replace({
+          query: {
+            code: this.answer,
+            site: document.documentElement.scrollTop,
+            isposted: false
+          }
+        });
+      } else {
         clearTimeout(this.timeoutId);
         this.timeoutId = setTimeout(() => {
-          this.$router.replace({query:{
-            code:this.answer
-          }})
-        },2000);
+          this.$router.replace({
+            query: {
+              code: this.answer,
+              site: document.documentElement.scrollTop,
+              isposted: false
+            }
+          });
+        }, 2000);
+      }
     },
-    '$store.state.bank.currentOutClassType'(){
-        this.ctype=this.$store.state.bank.bankList.outclass.find((arr)=>{
-        return arr.aka === this.$store.state.bank.currentOutClassType
-      }).name
+    "$store.state.bank.currentOutClassType"() {
+      this.ctype = this.$store.state.bank.bankList.outclass.find(arr => {
+        return arr.aka === this.$store.state.bank.currentOutClassType;
+      }).name;
     }
   },
   methods: {
@@ -277,13 +300,23 @@ export default {
       ).then(msg => {
         this.step.current = 2;
         this.step.status = "finish";
-        this.$nextTick(() => {
-          document.getElementById("abc").scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest"
-          });
+        // this.$nextTick(() => {
+        //   document.getElementById("abc").scrollIntoView({
+        //     behavior: "smooth",
+        //     block: "end",
+        //     inline: "nearest"
+        //   });
+        // });
+
+        this.$router.replace({
+          query: {
+            code: this.answer,
+            site: document.documentElement.clientHeight,
+            isposted: true
+          }
         });
+
+
         this.isPost = "判题完成";
         if (msg.data.message !== "编译失败") {
           this.percent = 100;

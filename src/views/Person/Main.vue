@@ -23,15 +23,22 @@
                     style="float: left; font-size: 18px ;margin-bottom: 10px;font-weight:600"
                 >实验完成情况</span>
             </div>
+
             <div style="height:62px ">
+
+              <i-col span="10">
                 <div class="finish">
                     <span style="font-size: 15px;float: left;">C语言程序设计</span>
                     <Progress :percent="percent" />
                 </div>
+              </i-col>
+              <i-col span="1">
                 <div
                     style="width: 1px;background:#707070;height:45px;float:left; margin-top: 17px"
                 />
-                <div class="continue">
+                </i-col>
+              <i-col span="13">
+                  <div class="continue">
                     <Col span="12">
                         <div style="width: 200px;float: left;padding-top: px; margin-left: 15px">
                             <p style="margin-top: 5px">上次进度</p>
@@ -43,7 +50,7 @@
                         </div>
                     </Col>
                     <Col span="12">
-                        <div style="float: left;margin-left: 55px;margin-top:12px;">
+                        <div style="float: left;margin-left: 45px;margin-top:12px;">
                             <Button
                                 shape="circle"
                                 type="primary"
@@ -53,8 +60,13 @@
                         </div>
                     </Col>
                 </div>
+              </i-col>
+                
+
+               
             </div>
         </div>
+
         <div class="qView" style="margin-top: 20px">
             <span style="font-size: 18px;font-weight:600">题目完成情况</span>
             <div>
@@ -182,27 +194,22 @@ export default {
 
 <style scoped>
 .view {
-  width: 634px;
+  width: 100%;
   height: 100px;
-  float: left;
 }
 
 .finish {
-  width: 310px;
   height: 41px;
   margin-top: 17px;
-  float: left;
 }
 
 .continue {
   width: 320px;
   height: 41px;
-
-  float: left;
 }
 
 .qView {
-  width: 634px;
+  width: 100%;
   height: auto;
   float: left;
 }

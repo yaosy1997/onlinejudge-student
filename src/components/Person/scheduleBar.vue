@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 20px;width: 600px;height: 80px">
+  <div style="margin-top: 20px;width: 100%;height: 80px">
     <div style="float: left">
       <i-circle
         :percent="percent"
@@ -14,7 +14,7 @@ padding-top: 2px">正确率</span>
       </i-circle>
     </div>
 
-    <div style="float: left; margin-left: 28px; width: 485px">
+    <div style="float: left; margin-left: 28px; width: 75%">
       <div style="margin-top: 10px">
         <span>{{ type }}</span>
       </div>
@@ -23,7 +23,7 @@ padding-top: 2px">正确率</span>
           :percent="passedpec"
           :hide-info="true"
           status="success"
-          style="width: 380px"/>
+          style="width: 76%"/>
         <span> &ensp;&ensp;已通过 </span>
         <span style="float: right">{{ passed }}/{{ total }}</span>
       </div>
@@ -31,7 +31,7 @@ padding-top: 2px">正确率</span>
         <Progress
           :percent="finishpec"
           :hide-info="true"
-          style="width: 380px"/>
+          style="width: 76%"/>
         <span> &ensp;&ensp;已提交</span>
         <span style="float: right">{{ finished }}/{{ total }}</span>
       </div>
