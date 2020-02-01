@@ -11,22 +11,19 @@
                         <div style="margin-left:30px;margin-top:10px;">
                             <h2
                                 style="font-weight:400;color: #2E8FFF"
-                            >{{ AnswerInfo.question.question_name}}</h2>
+                            >{{ AnswerInfo.question.questionName}}</h2>
                             <!--<textarea  class="text-area" ></textarea>-->
                             <Row>
                                 <Col span="12">
                                     <h3 style="margin-top:7px">题目说明</h3>
                                 </Col>
                                 <Col span="12">
-                                    <div style="float: right;margin-right: 50px">
-                                        题目难度：
-                                        <Rate :count="3" v-model="valueDisabled" disabled />
-                                    </div>
+                         
                                 </Col>
                             </Row>
                             <Input
                                 :autosize="true"
-                                :value="AnswerInfo.question.question_text"
+                                :value="AnswerInfo.question.questionText"
                                 class="text-area1"
                                 readonly
                                 type="textarea"

@@ -82,7 +82,7 @@ export const judgeCode = (code, lanauge, id, status) => {
     name: 'language',
     value: lanauge
   }, {
-    name: 'question_id',
+    name: 'questionId',
     value: id
   }, {
     name: 'status',
@@ -110,7 +110,7 @@ export const getAnswer=(questionId,type)=>{
     url='/questionanswer'
   }
   const data=paramsSerializer([{
-    name:'question_id',
+    name:'questionId',
     value:questionId
   }])
   return axios.request({

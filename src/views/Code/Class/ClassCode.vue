@@ -264,22 +264,32 @@ export default {
       }
     },
     Last() {
+      this.answer = "";
+      this.step.current = 0;
+      this.step.status = "process";
+      this.error.statue=false;
+      this.error.message=[]
+      this.data1=[]
       this.$router.push({
         name: "eachClassCode",
         params: {
           questionId: parseInt(this.$route.params.questionId) - 1
         }
       });
-      this.answer = "";
     },
     Next() {
+      this.answer = "";
+      this.step.current = 0;
+      this.step.status = "process";
+      this.error.statue=false;
+      this.error.message=[]
+      this.data1=[]
       this.$router.push({
         name: "eachClassCode",
         params: {
           questionId: parseInt(this.$route.params.questionId) + 1
         }
       });
-      this.answer = "";
     },
     post: function() {
       this.step.current = 1;

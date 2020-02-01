@@ -11,7 +11,7 @@
                         class="row"
                         style="width: 80%">
                     <div class="col-md-7" style="margin-bottom:24px;"><label>姓名：</label>
-                        <Input v-model="info.student_name"  style="width: 300px"/>
+                        <Input v-model="info.studentName"  style="width: 300px"/>
                     </div>
                     <div class="col-md-7" style="margin-bottom:24px;"><label>昵称：</label>
                         <Input v-model="info.nickname" clearable style="width: 300px"/>
@@ -32,7 +32,7 @@
                         class="row"
                         style="width: 80%">
                     <div class="col-md-5" style="margin-bottom:24px;"><label>学号：</label>
-                        <Input v-model="info.schoolid" clearable style="width: 300px"/>
+                        <Input v-model="info.schoolId" clearable style="width: 300px"/>
                     </div>
                     <div class="col-md-5" style="margin-bottom:24px;"><label>学校：</label>
                         <Input v-model="info.school" clearable style="width: 300px"/>

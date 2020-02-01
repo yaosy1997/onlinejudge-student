@@ -43,12 +43,12 @@ import {getFavorite,deleteFavorite} from '@/api/user.js'
                 columns7: [
                     {
                         title: '题号',
-                        key: 'question_id',
+                        key: 'questionId',
                         width: 100,
                     },
                     {
                         title: '题目',
-                        key: 'question_name',
+                        key: 'questionName',
                         tooltip: true
                     },
                     {
@@ -104,13 +104,13 @@ import {getFavorite,deleteFavorite} from '@/api/user.js'
 
         methods: {
             test(index) {
-                let question=this.data6[index].question_id
+                let question=this.data6[index].questionId
                 this.$router.push({name:'eachOutClassCode',params:{questionId:question}})
             },
 
 
             unstar(index) {
-               deleteFavorite(this.data6[index].question_id).then(res => {
+               deleteFavorite(this.data6[index].questionId).then(res => {
                     if (res.data.code === "200") {
                         this.$Message.success("删除成功");
                         this.data6.splice(index, 1);

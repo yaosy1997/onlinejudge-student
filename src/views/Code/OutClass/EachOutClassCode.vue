@@ -19,12 +19,12 @@
     <Row>
         <i-col span="24">
             <div style="margin-left:30px;margin-top:10px;">
-                <h2 style="font-weight:400;color: #2E8FFF">{{ text1.question_name }}</h2>
+                <h2 style="font-weight:400;color: #2E8FFF">{{ text1.questionName }}</h2>
                 <!--<textarea  class="text-area" ></textarea>-->
 
                 <Input
                     :autosize="true"
-                    :value="text1.question_text"
+                    :value="text1.questionText"
                     class="text-area1"
                     readonly
                     type="textarea"

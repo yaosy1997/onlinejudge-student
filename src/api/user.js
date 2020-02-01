@@ -171,8 +171,8 @@ export const uploadImage = (image) => {
 
 export const changeStudentInformation = (info) => {
   const data = paramsSerializer([{
-    name: 'realname',
-    value: info.student_name
+    name: 'studentName',
+    value: info.studentName
   }, {
     name: 'nickname',
     value: info.nickname
@@ -189,8 +189,8 @@ export const changeStudentInformation = (info) => {
     name: 'major',
     value: info.major
   }, {
-    name: 'schoolid',
-    value: info.schoolid
+    name: 'schoolId',
+    value: info.schoolId
   }])
   return axios.request({
     url: '/change_student_Information',
@@ -214,7 +214,7 @@ export const changePassword = (password) => {
 
 export const setFavorite = (questionId) => {
   const data = paramsSerializer([{
-    name: 'question_id',
+    name: 'questionId',
     value: questionId
   }])
   return axios.request({
@@ -233,7 +233,7 @@ export const getFavorite = () => {
 
 export const deleteFavorite = (questionId) => {
   const data = paramsSerializer([{
-    name: 'question_id',
+    name: 'questionId',
     value: questionId
   }])
   return axios.request({

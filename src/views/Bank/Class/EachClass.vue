@@ -45,7 +45,7 @@
                   <i-col span="14">
                     <p style="font-size:13px;"><Icon type="md-apps" size="18" color="orange"/> 累计提交题目</p>
                   <div style="margin-top:0.4vw">
-                    <span style="margin-left:19px;font-size:16px;font-weight:600;">{{$store.state.user.leftInfo.post_number}}</span><span style="margin-left:3px;font-size:12px;color：#e5e5e5">项</span>
+                    <span style="margin-left:19px;font-size:16px;font-weight:600;">{{$store.state.user.leftInfo.postNumber}}</span><span style="margin-left:3px;font-size:12px;color：#e5e5e5">项</span>
                     </div>
                   </i-col>
                 </Row>
@@ -54,13 +54,13 @@
                   <i-col span="10">
                     <p style="font-size:13px;"><Icon type="md-checkmark-circle" size="18" color="#00CC66" /> 累计通过题目</p>
                   <div style="margin-top:0.4vw">
-                    <span style="margin-left:19px;font-size:16px;font-weight:600;">{{$store.state.user.leftInfo.pass_number}}</span><span style="margin-left:3px;font-size:12px;color：#e5e5e5">项</span>
+                    <span style="margin-left:19px;font-size:16px;font-weight:600;">{{$store.state.user.leftInfo.passNumber}}</span><span style="margin-left:3px;font-size:12px;color：#e5e5e5">项</span>
                     </div>
                   </i-col>
                   <i-col span="14">
                     <p style="font-size:13px;"><Icon type="md-time" size="18" color="#9966FF"/> 实验截止日期</p>
                   <div style="margin-top:0.4vw">
-                    <span style="margin-left:19px;font-size:16px;font-weight:600;">{{$store.state.user.summary.end_Data}}</span><span style="margin-left:3px;font-size:12px;color：#e5e5e5"></span>
+                    <span style="margin-left:19px;font-size:16px;font-weight:600;">{{$store.state.user.summary.endData}}</span><span style="margin-left:3px;font-size:12px;color：#e5e5e5"></span>
                     </div>
                   </i-col>
                 </Row>
@@ -79,7 +79,7 @@
         </div>
         <div name="continue" class="box" style="margin-top:1vw;height:110px">
            <p style="font-size:15px;font-weight:600;font-family:'SimHei';text-align:left;margin-top:-6px;">上次进度</p>
-          <p style="margin-left:5px;font-size:14px;margin-top:5px;">{{$store.state.user.summary.question_name}}</p>
+          <p style="margin-left:5px;font-size:14px;margin-top:5px;">{{$store.state.user.summary.questionName}}</p>
           <!-- <p style="margin-top:0.5vw">提交截至于 2019-03-18 23:15:55.0</p> -->
           <Button type="primary" shape="circle" icon="md-code-working" style="margin-top:0.5vw" @click="cuntinue">继续做题</Button>
         </div>
@@ -135,7 +135,7 @@
       cuntinue(){
         this.$router.push({
                     name: 'eachClassCode',
-                    params: { questionId: this.$store.state.user.summary.question_id}
+                    params: { questionId: this.$store.state.user.summary.questionId}
                 });
       }
     }

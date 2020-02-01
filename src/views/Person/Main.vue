@@ -42,10 +42,10 @@
                     <Col span="12">
                         <div style="width: 200px;float: left;padding-top: px; margin-left: 15px">
                             <p style="margin-top: 5px">上次进度</p>
-                            <p style="color: #2E8FFF;">{{summary.question_name}}</p>
+                            <p style="color: #2E8FFF;">{{summary.questionName}}</p>
                             <span>
                                 截至于
-                                <span style="color: rgb(255, 0, 0);">{{summary.end_Data}}</span>
+                                <span style="color: rgb(255, 0, 0);">{{summary.endData}}</span>
                             </span>
                         </div>
                     </Col>
@@ -72,29 +72,29 @@
             <div>
                 <ScheduleBar
                     :total="summarize.basic"
-                    :passed="summarize.basic_number_Finished"
-                    :finished="summarize.basic_number"
+                    :passed="summarize.basicNumberFinished"
+                    :finished="summarize.basicNumber"
                     type="基础练习"
                     color="#609DF8"
                 />
                 <ScheduleBar
                     :total="summarize.middle"
-                    :passed="summarize.midlle_number_Finished"
-                    :finished="summarize.middle_number"
+                    :passed="summarize.midlleNumberFinished"
+                    :finished="summarize.middleNumber"
                     type="算法入门"
                     color="#609DF8"
                 />
                 <ScheduleBar
                     :total="summarize.difficult"
-                    :passed="summarize.difficult_number_Finished"
-                    :finished="summarize.difficult_number"
+                    :passed="summarize.difficultNumberFinished"
+                    :finished="summarize.difficultNumber"
                     type="算法提高"
                     color="#609DF8"
                 />
                 <ScheduleBar
-                    :total="summarize.vdifficult"
-                    :passed="summarize.vdifficult_number_Finished"
-                    :finished="summarize.vdifficult_number"
+                    :total="summarize.veryDifficult"
+                    :passed="summarize.veryDifficultNumberFinished"
+                    :finished="summarize.veryDifficultNumber"
                     type="算法挑战"
                     color="#609DF8"
                 />
@@ -160,7 +160,7 @@ export default {
         let date = leastFiveQuestion[i].question_time.slice(0, 9);
         let time = leastFiveQuestion[i].question_time.slice(11, -2);
         let name = leastFiveQuestion[i].question_name;
-        let id = leastFiveQuestion[i].question_id;
+        let id = leastFiveQuestion[i].acid;
         let result = leastFiveQuestion[i].question_result;
         if (i === 0) {
           let detail = [{ id, time, name, result }];
@@ -185,7 +185,7 @@ export default {
     continueWork: function() {
       this.$router.push({
         name: "eachClassCode",
-        params: { questionId: this.$store.state.user.summary.question_id }
+        params: { questionId: this.$store.state.user.summary.questionId }
       });
     }
   }

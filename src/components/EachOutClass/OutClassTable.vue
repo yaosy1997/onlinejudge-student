@@ -41,12 +41,12 @@ export default {
       columns: [
         {
           title: "题号",
-          key: "question_number"
+          key: "questionNumber"
           // width: 100
         },
         {
           title: "题目",
-          key: "question_name",
+          key: "questionName",
           tooltip: true
         },
         {
@@ -95,7 +95,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.test(params.row.question_number);
+                      this.test(params.row.questionNumber);
                     }
                   }
                 },
@@ -113,7 +113,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.star(params.row.question_number);
+                      this.star(params.row.questionNumber);
                     }
                   }
                 },
@@ -128,7 +128,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.check(params.row.question_number);
+                      this.check(params.row.questionNumber);
                     }
                   }
                 },

@@ -1,6 +1,6 @@
 const local = {
     api: 'http://127.0.0.1:8081',
-    cloudApi: 'http://47.95.1.117:8081',
+    cloudApi: 'http://47.95.1.117:8082',
     imageApi: 'http://47.95.1.117:80'
 }
 

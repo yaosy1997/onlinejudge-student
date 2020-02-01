@@ -196,7 +196,6 @@ export default {
   data() {
     return {
       ctype: "基础练习",
-      question_number: 1,
       cmOptions: options,
       model3: "Java",
       language: "c",
@@ -270,15 +269,28 @@ export default {
         this.cmOptions.mode = "text/x-c++src";
       }
     },
-    Last() {
+    Last() {      
+      this.answer = "";
+      this.step.current = 0;
+      this.step.status = "process";
+      this.error.statue=false;
+      this.error.message=[]
+      this.data1=[]
       this.$router.push({
         name: "eachOutClassCode",
         params: {
           questionId: parseInt(this.$route.params.questionId) - 1
         }
       });
+
     },
     Next() {
+      this.answer = "";
+      this.step.current = 0;
+      this.step.status = "process";
+      this.error.statue=false;
+      this.error.message=[]
+      this.data1=[]
       this.$router.push({
         name: "eachOutClassCode",
         params: {

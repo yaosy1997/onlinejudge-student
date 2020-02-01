@@ -19,12 +19,12 @@
     <Row>
         <i-col span="24">
             <div style="margin-left:30px;margin-top:10px;">
-                <h2 style="font-weight:400;color: #2E8FFF">{{ text1.question_name }}</h2>
+                <h2 style="font-weight:400;color: #2E8FFF">{{ text1.questionName }}</h2>
                 <!--<textarea  class="text-area" ></textarea>-->
 
                 <Input
                     :autosize="true"
-                    :value="text1.question_text"
+                    :value="text1.questionText"
                     class="text-area1"
                     readonly
                     type="textarea"
@@ -53,6 +53,9 @@ export default {
     initClassQuestion(this.$route.params.questionId).then(msg => {
       if (msg.data.code === "200") {
         this.text1 = msg.data.data;
+      }else if(msg.data.code === "205"){
+        this.$Message.error('题目已过期');
+        this.$router.go(-1);
       }
     }).catch(msg =>{
         this.$Message.error('题目不存在');

@@ -75,7 +75,7 @@
                                         <i-col span="12" style="text-align:right;">
                                             <span
                                                 style="width: 34px;height: 28px;font-size: 30px;color: #2E8FFF;margin-right:5px;"
-                                            >{{ question.pass_number }}</span>
+                                            >{{ question.passNumber }}</span>
                                         </i-col>
                                         <i-col span="12">
                                             <p
@@ -89,7 +89,7 @@
                                         <i-col span="12" style="text-align:right;">
                                             <span
                                                 style=" width: 34px;height: 28px;font-size: 30px;color: #2E8FFF;margin-right:5px;"
-                                            >{{ question.post_number }}</span>
+                                            >{{ question.postNumber }}</span>
                                         </i-col>
                                         <i-col span="12">
                                             <p
@@ -135,7 +135,7 @@
                                         />目标做题：
                                     </span>
                                     <div v-if="changePlaneNumber===false">
-                                        <span style="float: right;">{{question.plan_number }}</span>
+                                        <span style="float: right;">{{question.planNumber }}</span>
                                     </div>
                                     <div v-else>
                                         <InputNumber :max="100" :min="1" v-model="setPlan" />
@@ -148,7 +148,7 @@
                                             style="display:inline-block;vertical-align:middle;margin-right:8px;width:20px;"
                                         />已完成：
                                     </span>
-                                    <span style="float: right;">{{ question.finished_number }}</span>
+                                    <span style="float: right;">{{ question.finishedNumber }}</span>
                                 </div>
                                 <div class="plan-text">
                                     <span style="float: left;">
@@ -161,7 +161,7 @@
                                 <div class="plan-text" style="margin-top: 18px ;text-align:right;">
                                     <span
                                         style="width: 100%;color: #2E8FFF;font-size:16px;"
-                                    >{{ question.last_address }}</span>
+                                    >{{ question.lastAddress }}</span>
                                 </div>
                                 <div class="plan-text" style="margin-top: 30px">
                                     <div v-if="changePlaneNumber===false">
@@ -247,14 +247,14 @@ export default {
     },
     changePlane() {
       this.changePlaneNumber = true;
-      this.setPlan = this.question.plan_number;
+      this.setPlan = this.question.planNumber;
     },
     confirm() {
       changePlan(this.setPlan)
         .then(msg => {
           if (msg.data.code === "200") {
             this.$Message.success("修改成功");
-            this.question.plan_number = this.setPlan;
+            this.question.planNumber = this.setPlan;
           }
           this.changePlaneNumber = false;
         })
