@@ -181,12 +181,13 @@ const cloumn = [
   }
 ];
 
-const situation = {
-  AC_RIGHT: "通过",
-  AC_WRONG: "结果错误",
-  AC_MEMORYOUT: "栈溢出",
-  AC_TIMEOUT: "超时"
-};
+
+function situation (situation){
+  if(situation==="AC_RIGHT")return"通过"
+  else if(situation==="AC_WRONG")return"结果错误"
+  else if(situation==="AC_MEMORYOUT")return"栈溢出"
+  else return"超时"
+}
 
 export default {
   name: "outclassCode",
@@ -299,6 +300,8 @@ export default {
       });
     },
     post: function() {
+      this.error.statue=false;
+      this.error.message=[]
       this.step.current = 1;
       this.step.status = "process";
       this.$Message.success("提交成功");
@@ -334,10 +337,9 @@ export default {
           this.percent = 100;
           this.judgeState = "判题结果";
           let result = msg.data.data[0];
-
           let data = {
             name: "判题结果",
-            data: situation.result.question_result,
+            data: situation(result.question_result),
             data1: result.running_time,
             data2: result.memory
           };
@@ -353,7 +355,6 @@ export default {
           this.data1.push(data);
           this.error.statue = true;
 
-          this.error.message = [];
           for (let i = 0; i < msg.data.data.length; i++) {
             let temp = msg.data.data[i];
             if (
