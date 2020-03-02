@@ -53,7 +53,7 @@
         class="layout-footer-center"
         style="font-size:10px;text-align:center;background-color:#fff0;margin-top:80px;position:absolute;bottom:0;"
       >
-        <a href="http://www.miitbeian.gov.cn" style="margin-right:12px;">苏ICP备17069209号</a>
+        <a href="http://www.beian.miit.gov.cn/" style="margin-right:12px;">苏ICP备17069209号</a>
         <img
           src="../assets/beiantubiao.png"
           style="display:inline-block;vertical-align:middle;margin-right:2px"
